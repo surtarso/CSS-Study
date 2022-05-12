@@ -1,27 +1,31 @@
 body {
     background: #f7f7f7;
     font-family: Arial;
-    max-width: 900px; /*ajustando a maxima permite tamanhos menores*/
-    margin: auto; /*ajusta a margem ao tamanho da tela*/
+    max-width: 900px;
+    /*ajustando a maxima permite tamanhos menores*/
+    margin: auto;
+    /*ajusta a margem ao tamanho da tela*/
 }
 
 /* # para ID, . para STYLE */
-#title, .subtitle, .post_title {
+#title,
+.subtitle,
+.post_title {
     color: #505050;
 }
 
-#title{
+#title {
     font-size: 40px;
 }
 
-.subtitle{
+.subtitle {
     text-transform: uppercase;
     text-decoration: underline;
 }
 
-.header_img{
+.header_img {
     border: 1px solid #505050;
-    border-radius: 30%;   
+    border-radius: 30%;
 }
 
 .post_title {
@@ -37,7 +41,7 @@ body {
     margin-bottom: 15px;
 }
 
-.post{
+.post {
     /* outras opcoes de manipulacao de background
     background-color: green;
     background-image: url("file.png");
@@ -77,7 +81,7 @@ body {
     margin-bottom: 15px;
 }
 
-.post_img{
+.post_img {
     /* posso tambem arredondar as bordas:
     border-radius: 10px;
     border-radius: 50%;
@@ -88,12 +92,12 @@ body {
     /*width: 100%;*/
 }
 
-.post_content{
+.post_content {
     margin: 0px;
     margin-bottom: 15px;
 }
 
-.contact_list{
+.contact_list {
     /*
     list-style-type: square;
     */
@@ -109,4 +113,3 @@ body {
     font-family: Verdana;
     color: blue;
 }
-
