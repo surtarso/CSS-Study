@@ -1,0 +1,112 @@
+body {
+    background: #f7f7f7;
+    font-family: Arial;
+    max-width: 900px; /*ajustando a maxima permite tamanhos menores*/
+    margin: auto; /*ajusta a margem ao tamanho da tela*/
+}
+
+/* # para ID, . para STYLE */
+#title, .subtitle, .post_title {
+    color: #505050;
+}
+
+#title{
+    font-size: 40px;
+}
+
+.subtitle{
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.header_img{
+    border: 1px solid #505050;
+    border-radius: 30%;   
+}
+
+.post_title {
+    /*
+    font-family: Verdana, Arial;
+    font-weight: bold; normal;
+    text-transform: uppercase; lowercase; capitalize;    
+    text-decoration: underline; overline;
+    */
+    font-size: 16px;
+    font-style: italic;
+    margin: 0px;
+    margin-bottom: 15px;
+}
+
+.post{
+    /* outras opcoes de manipulacao de background
+    background-color: green;
+    background-image: url("file.png");
+    background-position: top;
+    */
+    background: #FFF;
+
+    /* espaco entre o conteudo e a borda:
+       pode ser usado com: y,x ou U R D L 
+      o padding tambem pode ser usado com formas especificas
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 0;
+        ou apenas um valor para as 4 bordas:
+    */
+    padding: 15px;
+
+    /* adiciona uma borda em volta do padding - largura, estilo, cor
+        posso escolher qual borda:    
+    border-top: 2px dotted green;
+    border-right: 4px dashed pink;
+        ou ainda ser especifico em cada estilo:
+    border-width: 3px;
+    border-color: #505050;
+    border-style: solid;
+        posso juntar essas opcoes:
+    border-top-width: 3px;
+    border-top-color: blue;
+    border-top-style: solid;
+        ou ainda generalizar:    
+    */
+    border: 3px solid #505050;
+    border-radius: 5px;
+
+    /* espacamento entre elementos */
+    margin-bottom: 15px;
+}
+
+.post_img{
+    /* posso tambem arredondar as bordas:
+    border-radius: 10px;
+    border-radius: 50%;
+    border-radius: x,y ou U R L D
+    */
+    border-radius: 10%;
+    margin-bottom: 15px;
+    /*width: 100%;*/
+}
+
+.post_content{
+    margin: 0px;
+    margin-bottom: 15px;
+}
+
+.contact_list{
+    /*
+    list-style-type: square;
+    */
+    list-style-type: none;
+    padding: 0;
+    padding-left: 15px;
+    margin: 0;
+}
+
+/*posso acessar itens dentro das minhas classses
+    aqui acesso apenas a ancora da minha lista */
+.contact_list li a {
+    font-family: Verdana;
+    color: blue;
+}
+

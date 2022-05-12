@@ -1,2 +1,2 @@
 # HTML-Projects
-My HTML study
+My HTML/CSS studies
