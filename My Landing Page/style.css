@@ -10,7 +10,7 @@ body {
 .header-wrapper {
     height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(129, 73, 82), rgb(40, 70, 116), rgb(25, 132, 165));
+    background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(93, 73, 129), rgb(40, 70, 116), rgb(25, 132, 165));
     background-size: 400% 400%;
     display: flex;
     flex-direction: column;
@@ -27,6 +27,7 @@ h1 {
 }
 
 h3 {
+    margin-top: -20px;
     font-family: Arial;
     font-weight: bold;
     text-transform: uppercase;
@@ -133,6 +134,7 @@ h3 {
 
 .menu-items ul {
     list-style-type: none;
+    text-align: right;
 }
 
 .menu-items ul li a {
@@ -141,7 +143,7 @@ h3 {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 /* animacao do menu hamburger*/
