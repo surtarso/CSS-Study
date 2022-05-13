@@ -1,0 +1,361 @@
+body {
+    padding: 0;
+    margin: 0;
+    color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+}
+
+/* HEADER */
+.header-wrapper {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(129, 73, 82), rgb(40, 70, 116), rgb(25, 132, 165));
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: backgroundTransition 8s ease-in-out infinite;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: whitesmoke;
+}
+
+h3 {
+    font-family: Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1b1a1a;
+}
+
+.header-image {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(-10deg);
+    height: 40%;
+    border-radius: 50%;
+    margin-bottom: 50px;
+}
+
+@keyframes backgroundTransition {
+    0% {
+        background-position: 0% 80%;
+    }
+    50% {
+        background-position: 80% 100%;
+    }
+    100% {
+        background-position: 0% 80%;
+    }
+}
+
+/* menu hamburger */
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out 0;
+}
+
+.checkbox .trace {
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out;
+}
+
+.checkbox .trace:nth-child(1) {
+    top: 26px;
+    transform: rotate(0);
+}
+.checkbox .trace:nth-child(2) {
+    top: 46px;
+    transform: rotate(0);
+}
+.checkbox .trace:nth-child(3) {
+    top: 66px;
+    transform: rotate(0);
+}
+
+/* some com o checkbox original */
+#toggle {
+    display: none;
+}
+
+/* MENU c/ links */
+.menu {
+    position: absolute;
+    top: 28px;
+    right: 30px;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px whitesmoke;
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-items {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-items ul {
+    list-style-type: none;
+}
+
+.menu-items ul li a {
+    margin: 10px 0;
+    color: rgb(83, 46, 83);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+/* animacao do menu hamburger*/
+
+#toggle:checked + .checkbox .trace:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: purple;
+    top: 47px;
+}
+#toggle:checked + .checkbox .trace:nth-child(2) {
+    transform: translateX(100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: purple;
+    top: 48px;
+}
+
+/* animacao do conteudo do menu */
+
+#toggle:checked + .checkbox {
+    background-color: white;
+}
+
+#toggle:checked ~ .menu {
+    box-shadow: 0px 0px 0px 100vmax white;
+    z-index: 1;
+}
+
+#toggle:checked ~ .menu-items {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* CARDS */
+
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0;
+    text-decoration: none;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    text-decoration: none;
+}
+
+/* cards */
+.card {
+    height: 300px;
+    width: 300px;
+    margin: 3rem 0 0;
+    border-radius: 50%;
+    background-image: url(img/urcade.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.9);
+    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* textos ao lado dos cards */
+.card-text {
+    width: 40%;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    color: gray; /* cor do texto ao lado dos cards*/
+}
+
+.card-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    display: block;
+    border: 4px dashed rgb(13, 160, 197); /* cor da borda do card antes hover*/
+    border-radius: 50%;
+    opacity: 0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card-wrapper h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+    margin-top: 125px;
+}
+
+.card-wrapper p {
+    font-size: 0;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card:hover {
+    filter: grayscale(0.6);
+}
+
+.card:hover > .card-wrapper::before {
+    text-decoration: none;
+    opacity: 1;
+    width: 285px;
+    height: 285px;
+}
+
+/* texto pequeno que aparece apos o hover nos cards */
+.card:hover > .card-wrapper p {
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    font-size: 12px;
+    font-weight: bold;
+    color: whitesmoke; /* cor do texto extra ao dar hover*/
+    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
+}
+
+/* animacao do bounce vertical em si */
+@keyframes wordBounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.links {
+    text-decoration: none;
+}
+/* FOOTER */
+.footer {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1b1a1a;
+    background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(129, 73, 82), rgb(40, 70, 116), rgb(25, 132, 165));
+}
+
+.footer a {
+    text-decoration: none;
+    color: #1b1a1a;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 800px) {
+    .header-image{
+        height: 35%;
+    }
+    .container {
+        margin-top: 0;
+    }
+    .card-container {
+        flex-direction: column;
+    }
+    .container .card-container:nth-child(1),
+    .container .card-container:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+    .card {
+        height: 250px;
+        width: 250px;
+    }
+    .card-text {
+        width: 90%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    .card:hover > .card-wrapper::before {
+        height: 220px;
+        width: 220px;
+    }
+    .card:hover > .card-wrapper p {
+        font-size: 10px;
+    }
+}
