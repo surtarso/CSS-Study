@@ -1,2 +1,4 @@
-# HTML-Projects
-My HTML/CSS studies
+# HTML/CSS - Projects
+
+- My HTML/CSS studies
+- My landing page
