@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,9 @@
 
 <body>
     <!-- HEADER -->
-    <header class="header-wrapper">
-        <div class="header">
+    <header class="header">
+        <div>
+            <button id="mode-selector">Dark Mode</button>
             <div class="checkbox-container">
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="toggle">
@@ -42,6 +44,7 @@
                 </div>
             </div>
         </div>
+        <!-- Header main image + name text-->
         <img class="header-image" src="img/me.gif">
         <h1>Tarso Galvão</h1>
         <h3>Full-Stack Developer</h3>
@@ -55,8 +58,12 @@
                 On Github you will find most of my projects and studies. I do my best to keep everything up-to-date on my own, contributors are welcome!
                 From Web Design to Game Engines, algorithms and art, to Bash scripts, here is where I'll keep them, feel free to snoop around!
             </div>
-            <a class="links" href="https://github.com/surtarso" target="_blank">
-                <div class="card">
+            <a 
+                class="links" 
+                href="https://github.com/surtarso" 
+                target="_blank"
+            >
+                <div class="card-1">
                     <div class="card-wrapper">
                         <h2>Github</h2>
                         <p>Clone me!</p>
@@ -67,7 +74,7 @@
         <!-- card 2 -->
         <div class="card-container">
             <a class="links" href="https://www.linkedin.com/in/tarsogalvao" target="_blank">
-                <div class="card">
+                <div class="card-2">
                     <div class="card-wrapper">
                         <h2>Linkedin</h2>
                         <p>Hire me!</p>
@@ -87,7 +94,7 @@
                 A project was born and URCade became a framework for building ready-to-use Pi images.
             </div>
             <a class="links" href="https://solidserverbr.ddns.net/urcade/" target="_blank">
-                <div class="card">
+                <div class="card-3">
                     <div class="card-wrapper">
                         <h2>URCade</h2>
                         <p>Play me!</p>
@@ -101,5 +108,6 @@
     <footer class="footer">
         <a href="mailto:tarso.galvao@gmail.com">Webmaster: Surtarso</a>
     </footer>
+    <script src="./index.js"></script>
 </body>
 </html>
