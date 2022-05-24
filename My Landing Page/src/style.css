@@ -44,7 +44,7 @@ button.dark-mode:hover {
 .header {
     height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(93, 73, 129), rgb(40, 70, 116), rgb(25, 132, 165));
+    background: linear-gradient(-45deg,rgb(73, 12, 73), rgb(109, 57, 65), rgb(40, 70, 116), rgb(25, 132, 165));
     background-size: 400% 400%;
     display: flex;
     flex-direction: column;
@@ -262,7 +262,7 @@ h3.dark-mode {
     width: 300px;
     margin: 3rem 0 0;
     border-radius: 50%;
-    background-image: url(img/github.png);
+    background-image: url(../img/github.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -281,7 +281,7 @@ h3.dark-mode {
     width: 300px;
     margin: 3rem 0 0;
     border-radius: 50%;
-    background-image: url(img/linkedin.png);
+    background-image: url(../img/linkedin.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -300,7 +300,7 @@ h3.dark-mode {
     width: 300px;
     margin: 3rem 0 0;
     border-radius: 50%;
-    background-image: url(img/urcade.png);
+    background-image: url(../img/urcade.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
