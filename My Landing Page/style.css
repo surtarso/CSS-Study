@@ -1,13 +1,47 @@
 body {
     padding: 0;
     margin: 0;
-    color: whitesmoke;
+    background: whitesmoke;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
 }
+body.dark-mode {
+    background: #1a1919;
+}
+
+/* light/dark MODE BUTTON */
+button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 10px;
+    margin-top: 10px;
+	border-radius: 40px;
+	font-size: 1.2rem;
+	height: 40px;
+	width: 120px;
+	border: none;
+	background-color: #4e545c;
+	color: #e5e8e8;
+	transition: all 0.5s linear;
+}
+
+button:hover {
+	background-color: #000401;
+}
+
+button.dark-mode {
+	background-color: #e5e8e8;
+	color: #4e545c;
+}
+
+button.dark-mode:hover {
+	background-color: #4e545c;
+	color: #e5e8e8;
+}
 
 /* HEADER */
-.header-wrapper {
+.header {
     height: 100vh;
     width: 100%;
     background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(93, 73, 129), rgb(40, 70, 116), rgb(25, 132, 165));
@@ -19,11 +53,17 @@ body {
     position: relative;
     animation: backgroundTransition 8s ease-in-out infinite;
 }
+.header.dark-mode {
+    background: #1b1a1a;
+}
 
 h1 {
     text-transform: uppercase;
     letter-spacing: 3px;
     color: whitesmoke;
+}
+h1.dark-mode {
+    color:rgb(93, 73, 129);
 }
 
 h3 {
@@ -33,6 +73,9 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #1b1a1a;
+}
+h3.dark-mode {
+    color: gray;
 }
 
 .header-image {
@@ -66,7 +109,7 @@ h3 {
 .checkbox {
     height: 100px;
     width: 100px;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     display: flex;
@@ -105,14 +148,14 @@ h3 {
 
 /* MENU c/ links */
 .menu {
-    position: absolute;
+    position: fixed;
     top: 28px;
     right: 30px;
     background: transparent;
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    box-shadow: 0px 0px 0px 0px whitesmoke;
+    box-shadow: 0px 0px 0px 0px gray;
     z-index: -1;
     transition: 400ms ease-in-out 0s;
 }
@@ -145,6 +188,9 @@ h3 {
     letter-spacing: 4px;
     font-size: 35px;
 }
+.menu-items.dark-mode ul li a {
+    color: gray;
+}
 
 /* animacao do menu hamburger*/
 
@@ -168,11 +214,18 @@ h3 {
 /* animacao do conteudo do menu */
 
 #toggle:checked + .checkbox {
-    background-color: white;
+    background-color: whitesmoke;
+}
+#toggle:checked + .checkbox.dark-mode { /* cor do fundo do hamburguer*/
+    background-color: #1b1a1a;
 }
 
-#toggle:checked ~ .menu {
-    box-shadow: 0px 0px 0px 100vmax white;
+#toggle:checked ~ .menu { /* COR DO FUNDO DO MENU ABERTO*/
+    box-shadow: 0px 0px 0px 100vmax whitesmoke;
+    z-index: 1;
+}
+#toggle:checked ~ .menu.dark-mode { /* COR DO FUNDO DO MENU ABERTO*/
+    box-shadow: 0px 0px 0px 100vmax #1b1a1a;
     z-index: 1;
 }
 
@@ -204,7 +257,45 @@ h3 {
 }
 
 /* cards */
-.card {
+.card-1{ /*GITHUB*/
+    height: 300px;
+    width: 300px;
+    margin: 3rem 0 0;
+    border-radius: 50%;
+    background-image: url(img/github.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.9);
+    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.card-2{ /*LINKEDIN*/
+    height: 300px;
+    width: 300px;
+    margin: 3rem 0 0;
+    border-radius: 50%;
+    background-image: url(img/linkedin.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.9);
+    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.card-3{ /*URCADE*/
     height: 300px;
     width: 300px;
     margin: 3rem 0 0;
@@ -274,11 +365,29 @@ h3 {
     transition: 0.3s;
 }
 
-.card:hover {
+.card-1:hover {
+    filter: grayscale(0.6);
+}
+.card-2:hover {
+    filter: grayscale(0.6);
+}
+.card-3:hover {
     filter: grayscale(0.6);
 }
 
-.card:hover > .card-wrapper::before {
+.card-1:hover > .card-wrapper::before {
+    text-decoration: none;
+    opacity: 1;
+    width: 285px;
+    height: 285px;
+}
+.card-2:hover > .card-wrapper::before {
+    text-decoration: none;
+    opacity: 1;
+    width: 285px;
+    height: 285px;
+}
+.card-3:hover > .card-wrapper::before {
     text-decoration: none;
     opacity: 1;
     width: 285px;
@@ -286,7 +395,25 @@ h3 {
 }
 
 /* texto pequeno que aparece apos o hover nos cards */
-.card:hover > .card-wrapper p {
+.card-1:hover > .card-wrapper p {
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    font-size: 12px;
+    font-weight: bolder;
+    color: whitesmoke; /* cor do texto extra ao dar hover*/
+    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
+}
+.card-2:hover > .card-wrapper p {
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    font-size: 12px;
+    font-weight: bold;
+    color: whitesmoke; /* cor do texto extra ao dar hover*/
+    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
+}
+.card-3:hover > .card-wrapper p {
     text-decoration: none;
     opacity: 1;
     visibility: visible;
@@ -319,8 +446,16 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #1b1a1a;
+    color: #2c2a2a;
     background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(129, 73, 82), rgb(40, 70, 116), rgb(25, 132, 165));
+    background-size: 400% 400%;
+    animation: backgroundTransition 8s ease-in-out infinite;
+}
+.footer.dark-mode {
+    background: #1b1a1a;
+}
+.footer.dark-mode a {
+    color: rgb(139, 135, 135);
 }
 
 .footer a {
