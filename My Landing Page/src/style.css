@@ -50,48 +50,18 @@ button.dark-mode:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: center;
     animation: backgroundTransition 16s ease-in-out infinite;
 }
-.header.dark-mode {
+.header.dark-mode {  /* black hole */
     animation: none;
     background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/blackhole.jpg');
     background-size: 150%;
     background-position: center;
     background-repeat: no-repeat;
+    animation: backgroundTransition-dark 16s ease-in-out infinite;
     
 }
-
-h1 {
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: whitesmoke;
-}
-h1.dark-mode {
-    color:rgb(93, 73, 129);
-}
-
-h3 {
-    margin-top: -20px;
-    font-family: Arial;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #1b1a1a;
-}
-h3.dark-mode {
-    color: gray;
-}
-
-.header-image {
-    visibility: visible;
-    opacity: 1;
-    transform: rotate(-10deg);
-    height: 40%;
-    border-radius: 50%;
-    margin-bottom: 50px;
-}
-
 @keyframes backgroundTransition {
     0% {
         background-position: 0% 80%;
@@ -103,7 +73,83 @@ h3.dark-mode {
         background-position: 0% 80%;
     }
 }
+@keyframes backgroundTransition-dark {
+    0% {
+        background-size: 140%;
+    }
+    50% {
+        background-size: 150%;
+    }
+    100% {
+        background-size: 140%;
+    }
+}
 
+h1 {  /*tarso galvao*/
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: whitesmoke;
+    animation: header-text 2s 1;
+    margin-top: -5px;
+}
+h1.dark-mode {
+    color:rgb(93, 73, 129);
+}
+
+h3 {  /*full stack dev*/
+    margin-top: -20px;
+    font-family: Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1b1a1a;
+    animation: header-text 2s 1;
+}
+h3.dark-mode {
+    color: gray;
+}
+
+@keyframes header-text {
+    0%{
+        color: transparent;
+    }
+    35%{
+        letter-spacing: 5px;
+        margin-bottom: -10px;  
+    }
+    85%{
+        letter-spacing: 1.5px;
+    }
+}
+
+.header-image {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(-10deg);
+    height: 40%;
+    border-radius: 50%;
+    margin-bottom: 50px;
+}
+
+/* .loader {
+    position: absolute;
+    margin-right: 180px;
+    margin-bottom: 545px;
+  
+    animation: infinite-spinning 4s infinite;
+    animation-timing-function: linear;
+    transform-origin: 500% 1000%;
+}
+  
+@keyframes infinite-spinning {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} */
+  
 /* menu hamburger */
 .checkbox-container {
     display: flex;
@@ -470,14 +516,21 @@ h3.dark-mode {
 
 /* RESPONSIVO */
 
-@media (max-width: 800px) {
+@media (max-width: 810px) {
+    /* .loader {
+        margin-bottom: 450px;
+    } */
     .header.dark-mode{
+        animation: none;
         background-size: 325%;
         background-position: center;
         background-repeat: no-repeat;
     }
+    h1 {
+        margin-top: -20px;
+    }
     .header-image{
-        margin-top: 120px;
+        margin-top: 100px;
         height: 35%;
     }
     .container {
