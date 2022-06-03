@@ -1,4 +1,5 @@
 # HTML/CSS - Projects
+Here lies my HTML/CSS studies.
 
-- My HTML/CSS studies
-- My landing page
+## Quick Links:
+- [My landing page](https://github.com/surtarso/HTML-Projects/tree/main/My%20Landing%20Page)
