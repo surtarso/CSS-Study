@@ -132,16 +132,27 @@ h3.dark-mode {
 }
 
 /* .loader {
-    position: absolute;
-    margin-right: 180px;
-    margin-bottom: 545px;
-  
+    position: inherit;
     animation: infinite-spinning 4s infinite;
     animation-timing-function: linear;
-    transform-origin: 500% 1000%;
+    transform-origin: -700% -700%;
+}
+.loader2 {
+    position: inherit;
+    animation: infinite-spinning2 4s infinite;
+    animation-timing-function: linear;
+    transform-origin: 700% 700%;
 }
   
 @keyframes infinite-spinning {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+@keyframes infinite-spinning2 {
     from {
         transform: rotate(0deg);
     }
@@ -597,4 +608,9 @@ h3.dark-mode {
     .card:hover > .card-wrapper p {
         font-size: 10px;
     }
+    /* .loader,
+    .loader2{
+        visibility: hidden;
+        animation: none;
+    } */
 }
