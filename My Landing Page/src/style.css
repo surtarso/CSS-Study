@@ -347,11 +347,31 @@ h3.dark-mode {
     transition: 0.3s;
 }
 .card-3{ /*URCADE*/
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     margin: 3rem 0 0;
     border-radius: 50%;
     background-image: url(../img/urcade.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.9);
+    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.card-4{ /*PLAYGROUND*/
+    height: 250px;
+    width: 250px;
+    margin: 3rem 0 0;
+    /* border-radius: 50%; */
+    background-image: url(../img/tom.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -425,6 +445,9 @@ h3.dark-mode {
 .card-3:hover {
     filter: grayscale(0.6);
 }
+.card-4:hover {
+    filter: grayscale(0.6);
+}
 
 .card-1:hover > .card-wrapper::before {
     text-decoration: none;
@@ -439,6 +462,12 @@ h3.dark-mode {
     height: 285px;
 }
 .card-3:hover > .card-wrapper::before {
+    text-decoration: none;
+    opacity: 1;
+    width: 285px;
+    height: 285px;
+}
+.card-4:hover > .card-wrapper::before {
     text-decoration: none;
     opacity: 1;
     width: 285px;
@@ -465,6 +494,15 @@ h3.dark-mode {
     animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
 }
 .card-3:hover > .card-wrapper p {
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    font-size: 12px;
+    font-weight: bold;
+    color: whitesmoke; /* cor do texto extra ao dar hover*/
+    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
+}
+.card-4:hover > .card-wrapper p {
     text-decoration: none;
     opacity: 1;
     visibility: visible;
