@@ -155,6 +155,20 @@ h3.dark-mode {
     }
 }
 
+
+/* language icons*/
+.icons{
+    width: 35px;
+    padding: 2px; 
+}
+.row{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    bottom: 0;
+    /* left: 0; */
+    padding: 1%;
+}
   
 /* menu hamburger */
 .checkbox-container {
@@ -493,6 +507,9 @@ h3.dark-mode {
         height:35px;
         margin-top: 250px;
         padding: 12vmax;
+    }
+    .icons{
+        width: 23px;
     }
     .card-iframe{
         margin-left: 5%;
