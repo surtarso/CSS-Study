@@ -104,7 +104,9 @@ h3 {  /*full stack dev*/
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #1b1a1a;
-    animation: header-text 2s 1;
+    animation: header-text 2.5s 1;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
 }
 h3.dark-mode {
     color: gray;
@@ -156,18 +158,31 @@ h3.dark-mode {
 }
 
 
-/* language icons*/
+/* programming language icons*/
 .icons{
     width: 35px;
-    padding: 2px; 
+    padding: 2px;
 }
 .row{
     position: absolute;
     display: flex;
     flex-wrap: wrap-reverse;
     bottom: 0;
-    /* left: 0; */
-    padding: 1%;
+    padding: 0.5%;
+    animation: icon-shrink 2s 1;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes icon-shrink{
+    0% {
+        transform: scale(1.5);
+    }
+    40%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
   
 /* menu hamburger */
