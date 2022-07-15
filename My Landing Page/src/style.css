@@ -4,6 +4,7 @@ body {
     background: whitesmoke;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
+    overflow-x: hidden;
 }
 body.dark-mode {
     background: #1a1919;
@@ -131,17 +132,16 @@ h3.dark-mode {
     margin-bottom: 50px;
 }
 
-/* .loader {
-    position: inherit;
+#Rocket {
+    position: absolute;
+    margin: 0;
+    margin-top: 150px;
+    padding: 15vh;
+    left: 50%;
+    right: 50%;
     animation: infinite-spinning 4s infinite;
     animation-timing-function: linear;
-    transform-origin: -700% -700%;
-}
-.loader2 {
-    position: inherit;
-    animation: infinite-spinning2 4s infinite;
-    animation-timing-function: linear;
-    transform-origin: 700% 700%;
+    transform-origin: 0% 0%;
 }
   
 @keyframes infinite-spinning {
@@ -152,14 +152,7 @@ h3.dark-mode {
         transform: rotate(-360deg);
     }
 }
-@keyframes infinite-spinning2 {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-} */
+
   
 /* menu hamburger */
 .checkbox-container {
@@ -493,9 +486,10 @@ h3.dark-mode {
 /* RESPONSIVO */
 
 @media (max-width: 810px) {
-    /* .loader {
-        margin-bottom: 450px;
-    } */
+    #Rocket{
+        margin-top: 250px;
+        padding: 12vmax;
+    }
     .card-iframe{
         margin-left: 5%;
     }
@@ -567,9 +561,4 @@ h3.dark-mode {
     .footer.dark-mode{
         font-size: 12px;
     }
-    /* .loader,
-    .loader2{
-        visibility: hidden;
-        animation: none;
-    } */
 }
