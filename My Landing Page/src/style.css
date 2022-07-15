@@ -46,7 +46,7 @@ button.dark-mode:hover {
     height: 100vh;
     width: 100%;
     background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/nebula.jpeg');
-    background-size: 250%;
+    background-size: 120%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,6 +133,8 @@ h3.dark-mode {
 }
 
 #Rocket {
+    width:40px;
+    height:40px;
     position: absolute;
     margin: 0;
     margin-top: 150px;
@@ -487,6 +489,8 @@ h3.dark-mode {
 
 @media (max-width: 810px) {
     #Rocket{
+        width:35px;
+        height:35px;
         margin-top: 250px;
         padding: 12vmax;
     }
@@ -507,7 +511,7 @@ h3.dark-mode {
     }
     .header.dark-mode{
         animation: none;
-        background-size: 325%;
+        background-size: 320%;
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -518,6 +522,7 @@ h3.dark-mode {
         margin-top: 100px;
         height: 35%;
     }
+
     .checkbox .trace:nth-child(1) {
         top: 25px;
         transform: rotate(0);
