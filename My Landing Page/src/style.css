@@ -170,7 +170,7 @@ h3.dark-mode {
 
 .checkbox {
     height: 100px;
-    width: 100px;
+    width: 90px;
     position: fixed;
     top: 0;
     right: 0;
@@ -298,7 +298,9 @@ h3.dark-mode {
 
 
 /* CARDS */
-
+.card-body{
+    width:min-content;
+}
 .container {
     width: 100%;
     height: auto;
@@ -317,108 +319,60 @@ h3.dark-mode {
     width: 90%;
     text-decoration: none;
 }
-
+/* api iframe */
 #iFrame{
-    width: 500px;
-    height: 520px;
+    width: 400px;
+    height: 420px;
     top: 50%;
     left: 50%;
     border: none;
 }
 
 /* cards */
-.card-0{
-    height: 500px;
-    width: 300px;
+.card-all{
     margin: 3rem 0 0;
-    background-image: url(../api/api.html?surtarso);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(126, 236, 255);
+    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    filter: grayscale(0.9);
     transition: 0.3s;
+}
+
+.card-0{  /* pie chart*/
+    height: 470px;
+    width: 300px;
+    filter: none;
 }
 .card-1{ /*GITHUB*/
     height: 300px;
     width: 300px;
-    margin: 3rem 0 0;
     border-radius: 50%;
-    background-image: url(../img/github.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: grayscale(0.9);
-    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
+    background-image: url(../img/github.png);  
 }
 .card-2{ /*LINKEDIN*/
     height: 300px;
     width: 300px;
-    margin: 3rem 0 0;
     border-radius: 50%;
     background-image: url(../img/linkedin.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: grayscale(0.9);
-    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
 }
 .card-3{ /*URCADE*/
     height: 250px;
     width: 250px;
-    margin: 3rem 0 0;
     border-radius: 50%;
     background-image: url(../img/urcade.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: grayscale(0.9);
-    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
 }
 
 .card-4{ /*PLAYGROUND*/
     height: 250px;
     width: 250px;
-    margin: 3rem 0 0;
     background-image: url(../img/tom.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: grayscale(0.9);
-    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
 }
 
 /* textos ao lado dos cards */
@@ -471,78 +425,26 @@ h3.dark-mode {
     transition: 0.3s;
 }
 
-.card-1:hover {
+.card-all:hover {
     filter: grayscale(0.6);
 }
-.card-2:hover {
-    filter: grayscale(0.6);
-}
-.card-3:hover {
-    filter: grayscale(0.6);
-}
-.card-4:hover {
-    filter: grayscale(0.6);
+.card-0:hover {
+    filter:none;
 }
 
-.card-1:hover > .card-wrapper::before {
+.card-all:hover > .card-wrapper::before {
     text-decoration: none;
     opacity: 1;
     width: 285px;
     height: 285px;
 }
-.card-2:hover > .card-wrapper::before {
-    text-decoration: none;
-    opacity: 1;
-    width: 285px;
-    height: 285px;
-}
-.card-3:hover > .card-wrapper::before {
-    text-decoration: none;
-    opacity: 1;
-    width: 285px;
-    height: 285px;
-}
-.card-4:hover > .card-wrapper::before {
-    text-decoration: none;
-    opacity: 1;
-    width: 285px;
-    height: 285px;
-}
-
 /* texto pequeno que aparece apos o hover nos cards */
-.card-1:hover > .card-wrapper p {
+.card-all:hover > .card-wrapper p {
     text-decoration: none;
     opacity: 1;
     visibility: visible;
     font-size: 12px;
     font-weight: bolder;
-    color: whitesmoke; /* cor do texto extra ao dar hover*/
-    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
-}
-.card-2:hover > .card-wrapper p {
-    text-decoration: none;
-    opacity: 1;
-    visibility: visible;
-    font-size: 12px;
-    font-weight: bold;
-    color: whitesmoke; /* cor do texto extra ao dar hover*/
-    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
-}
-.card-3:hover > .card-wrapper p {
-    text-decoration: none;
-    opacity: 1;
-    visibility: visible;
-    font-size: 12px;
-    font-weight: bold;
-    color: whitesmoke; /* cor do texto extra ao dar hover*/
-    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
-}
-.card-4:hover > .card-wrapper p {
-    text-decoration: none;
-    opacity: 1;
-    visibility: visible;
-    font-size: 12px;
-    font-weight: bold;
     color: whitesmoke; /* cor do texto extra ao dar hover*/
     animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
 }
@@ -593,6 +495,18 @@ h3.dark-mode {
     /* .loader {
         margin-bottom: 450px;
     } */
+    button{
+        margin-top: 23px;
+        margin-left: 20px;
+        font-size: 11px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .checkbox .trace {
+        width: 40px;
+        height: 5px;
+    }
     .header.dark-mode{
         animation: none;
         background-size: 325%;
@@ -605,6 +519,18 @@ h3.dark-mode {
     .header-image{
         margin-top: 100px;
         height: 35%;
+    }
+    .checkbox .trace:nth-child(1) {
+        top: 25px;
+        transform: rotate(0);
+    }
+    .checkbox .trace:nth-child(2) {
+        top: 40px;
+        transform: rotate(0);
+    }
+    .checkbox .trace:nth-child(3) {
+        top: 55px;
+        transform: rotate(0);
     }
     .container {
         margin-top: 0;
@@ -631,6 +557,10 @@ h3.dark-mode {
     }
     .card:hover > .card-wrapper p {
         font-size: 10px;
+    }
+    .footer,
+    .footer.dark-mode{
+        font-size: 12px;
     }
     /* .loader,
     .loader2{
