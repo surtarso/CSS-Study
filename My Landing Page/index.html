@@ -1,183 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-    <link rel="stylesheet" href="src/style.css">
-    <title>Tarso Galvão</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+        <link rel="stylesheet" href="src/style.css">
+        <title>Tarso Galvão</title>
+    </head>
 
-<body>
-    <!-- HEADER -->
-    <header class="header">
+    <body>
+        <!-- HEADER -->
+        <header id="Header" class="header">
 
-        <div>
-            <button id="mode-selector">Black Hole</button>
-            <button id="lang-selector">pt-BR</button>
-            <div class="checkbox-container">
-                <div class="checkbox-wrapper">
-                    <input type="checkbox" id="toggle">
-                    <label class="checkbox" for="toggle">
-                        <div class="trace"></div>
-                        <div class="trace"></div>
-                        <div class="trace"></div>
-                    </label>
-                    <div class="menu"></div>
-                    <nav class="menu-items">
-                        <ul>
-                            <li>
-                                <a id="cv" href="pdf/Tarso Galvao CV 2022.pdf"></a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/tarsogalvao" target="_blank">Linkedin</a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/surtarso" target="_blank">Github</a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/surtarso/" target="_blank">Instagram</a>
-                            </li>
-                            <li>
-                                <a id="ct" href="mailto:tarso.galvao@gmail.com"></a>
-                            </li>
-                        </ul>
-                    </nav>
+            <div>
+                <!-- mode/lang corner buttons -->
+                <button id="mode-selector">Black Hole</button>
+                <button id="lang-selector">pt-BR</button>
+                
+                <!-- corner menu -->
+                <div class="checkbox-container">
+                    <div class="checkbox-wrapper">
+
+                        <!-- hamburguer menu -->
+                        <input type="checkbox" id="toggle">
+                        <label class="checkbox" for="toggle">
+                            <div class="trace"></div>
+                            <div class="trace"></div>
+                            <div class="trace"></div>
+                        </label>
+
+                        <!-- menu items -->
+                        <div class="menu"></div>
+                        <nav class="menu-items">
+                            <ul>
+                                <li>
+                                    <a id="cv">texts changed in scripts.js (Curriculum)</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/tarsogalvao" target="_blank">Linkedin</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/surtarso" target="_blank">Github</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/surtarso/" target="_blank">Instagram</a>
+                                </li>
+                                <li>
+                                    <a id="ct" href="mailto:tarso.galvao@gmail.com">texts changed in scripts.js (Contact)</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Header main image + name text-->
-        <img class="header-image" src="img/me.gif">
-        <h1>Tarso Galvão</h1>
-        <h3 id="ht"></h3>
-        <img src="./img/rocket.webp" id="Rocket">
+            <!-- Header main image + name text-->
+            <img class="header-image" src="img/me.gif">
+            <h1>Tarso Galvão</h1>
+            <h3 id="ht">texts changed in scripts.js</h3>
+            <!-- rocket -->
+            <a id="rocket"><img src="./img/rocket.webp" id="Rocket"></a>
 
-        <!-- icons display -->
-        <div class="row">
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" />
+            <!-- icons display -->
+            <div class="row">
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg" />    
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
+                </div>          
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" /> 
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" />
+                </div>
+                <div class="column">
+                    <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+                </div>
             </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg" />    
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
-            </div>          
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" /> 
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" />
-            </div>
-            <div class="column">
-                <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-            </div>
-        </div>
 
-    </header>
+        </header>
 
-    <!-- cards container -->
-    <main class="container">
+        <!-- cards container -->
+        <main class="container">
 
-        <!-- card 0 (no link to click on this one) -->
-        <div class="card-container">
-                <div class="card-0 card-all">
-                    <div class="card-iframe">
-                        <div>
-                            <iframe id="iFrame" src="https://tarsogalvao.ddns.net/cv/api/api.html?surtarso" scrolling="no"></iframe>
+            <!-- card 0 (no links) GRAPH -->
+            <div class="card-container">
+                    <div class="card-0 card-all">
+                        <div class="card-iframe">
+                            <div>
+                                <iframe id="iFrame" src="https://tarsogalvao.ddns.net/cv/api/api.html?surtarso" scrolling="no"></iframe>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <div id="card-0" class="card-text"></div>
-        </div>
+                </a>
+                <div id="card-0" class="card-text">texts changed in scripts.js</div>
+            </div>
 
-        <!-- card 1 -->
-        <div class="card-container">
-            <div id="card-1" class="card-text"></div>
-            <a class="links" href="https://github.com/surtarso" target="_blank">
-                <div class="card-1 card-all">
-                    <div class="card-wrapper">
-                        <h2>Github</h2>
-                        <p>Clone me!</p>
+            <!-- card 1 GITHUB -->
+            <div class="card-container">
+                <div id="card-1" class="card-text">texts changed in scripts.js</div>
+                <a class="links" href="https://github.com/surtarso" target="_blank">
+                    <div class="card-1 card-all">
+                        <div class="card-wrapper">
+                            <h2>Github</h2>
+                            <p>Click!</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
-        <!-- card 2 -->
-        <div class="card-container">
-            <a class="links" href="https://www.linkedin.com/in/tarsogalvao" target="_blank">
-                <div class="card-2 card-all">
-                    <div class="card-wrapper">
-                        <h2>Linkedin</h2>
-                        <p>Hire me!</p>
+            <!-- card 2 LINKEDIN -->
+            <div class="card-container">
+                <a class="links" href="https://www.linkedin.com/in/tarsogalvao" target="_blank">
+                    <div class="card-2 card-all">
+                        <div class="card-wrapper">
+                            <h2>Linkedin</h2>
+                            <p>Click!</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <div id="card-2" class="card-text"></div>
-        </div>
+                </a>
+                <div id="card-2" class="card-text">texts changed in scripts.js</div>
+            </div>
 
-        <!-- card 3 -->
-        <div class="card-container">
-            <div id="card-3" class="card-text"></div>
-            <a class="links" href="https://solidserverbr.ddns.net/urcade/" target="_blank">
-                <div class="card-3 card-all">
-                    <div class="card-wrapper">
-                        <h2>URCade</h2>
-                        <p>Play me!</p>
+            <!-- card 3 URCADE -->
+            <div class="card-container">
+                <div id="card-3" class="card-text">texts changed in scripts.js</div>
+                <a class="links" href="https://solidserverbr.ddns.net/urcade/" target="_blank">
+                    <div class="card-3 card-all">
+                        <div class="card-wrapper">
+                            <h2>URCade</h2>
+                            <p>Click!</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
-        <!-- card 4 -->
-        <div class="card-container">
-            <a class="links" href="https://tarsogalvao.ddns.net/games" target="_blank">
-                <div class="card-4 card-all">
-                    <div class="card-wrapper">
-                        <h2>Playground</h2>
-                        <p>Have fun!</p>
+            <!-- card 4 PLAYGROUND -->
+            <div class="card-container">
+                <a class="links" href="https://tarsogalvao.ddns.net/games" target="_blank">
+                    <div class="card-4 card-all">
+                        <div class="card-wrapper">
+                            <h2>Playground</h2>
+                            <p>Click!</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <div id="card-4" class="card-text"></div>
-        </div>
+                </a>
+                <div id="card-4" class="card-text">texts changed in scripts.js</div>
+            </div>
 
-    </main>
+        </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <a href="mailto:tarso.galvao@gmail.com">Webmaster: Tarso Galvão</a>
-        <p>. Powered by HTML5, CSS and Javascript.</p>
-    </footer>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <a href="mailto:tarso.galvao@gmail.com">Webmaster: Tarso Galvão</a>
+            <p>. Powered by HTML5, CSS and Javascript.</p>
+        </footer>
 
-    <script src="src/scripts.js"></script>
-</body>
+        <script src="src/scripts.js"></script>
+        <script src="src/rocket.js"></script>
+    </body>
 </html>
