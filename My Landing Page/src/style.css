@@ -5,13 +5,16 @@ body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
     overflow-x: hidden;
+    transition: all 0.5s linear;
+
 }
 body.dark-mode {
     background: #1a1919;
 }
 
 /* light/dark MODE BUTTON */
-button {
+#mode-selector {
+    cursor: pointer;
     position: fixed;
     top: 0;
     left: 0;
@@ -22,23 +25,47 @@ button {
 	height: 40px;
 	width: 120px;
 	border: none;
-	background-color: #4e545c;
+	background-color: #2c2e32;
 	color: #e5e8e8;
-	transition: all 0.5s linear;
+	transition: all 0.3s linear;
 }
 
-button:hover {
+/* language selector button */
+#lang-selector{
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 140px;
+    margin-top: 10px;
+	border-radius: 40px;
+	font-size: 1.2rem;
+	height: 40px;
+	width: 75px;
+	border: none;
+	background-color: #2c2e32;
+	color: #e5e8e8;
+	transition: all 0.3s linear;
+}
+
+#mode-selector:hover,
+#lang-selector:hover {
 	background-color: #000401;
+    transition: all 0.3s linear;
 }
 
-button.dark-mode {
+#mode-selector.dark-mode,
+#lang-selector.dark-mode {
 	background-color: #e5e8e8;
-	color: #4e545c;
+	color: #35383c;
+    transition: all 0.3s linear;
 }
 
-button.dark-mode:hover {
+#mode-selector.dark-mode:hover,
+#lang-selector.dark-mode:hover {
 	background-color: #4e545c;
 	color: #e5e8e8;
+    transition: all 0.3s linear;
 }
 
 /* HEADER */
@@ -53,14 +80,16 @@ button.dark-mode:hover {
     justify-content: center;
     position: center;
     animation: backgroundTransition 16s ease-in-out infinite;
+    transition: all 0.5s linear;
+
 }
 .header.dark-mode {  /* black hole */
     animation: none;
     background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/blackhole.jpg');
-    background-size: 150%;
     background-position: center;
     background-repeat: no-repeat;
     animation: backgroundTransition-dark 16s ease-in-out infinite;
+    transition: all 0.5s linear;
     
 }
 @keyframes backgroundTransition {
@@ -92,6 +121,8 @@ h1 {  /*tarso galvao*/
     color: whitesmoke;
     animation: header-text 2s 1;
     margin-top: -5px;
+    transition: all 0.5s linear;
+
 }
 h1.dark-mode {
     color:rgb(93, 73, 129);
@@ -106,8 +137,9 @@ h3 {  /*full stack dev*/
     color: #1b1a1a;
     animation: header-text 2.5s 1;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-
+    transition: all 0.5s linear;
 }
+
 h3.dark-mode {
     color: gray;
 }
@@ -132,6 +164,7 @@ h3.dark-mode {
     height: 40%;
     border-radius: 50%;
     margin-bottom: 50px;
+    transition: all 0.5s linear;
 }
 
 #Rocket {
@@ -162,6 +195,7 @@ h3.dark-mode {
 .icons{
     width: 35px;
     padding: 2px;
+    transition: all 0.5s linear;
 }
 .row{
     position: absolute;
@@ -343,6 +377,8 @@ h3.dark-mode {
     align-items: center;
     margin: 3rem 0;
     text-decoration: none;
+    transition: all 0.5s linear;
+
 }
 
 .card-container {
@@ -351,6 +387,8 @@ h3.dark-mode {
     justify-content: space-evenly;
     width: 90%;
     text-decoration: none;
+    transition: all 0.5s linear;
+
 }
 
 /* cards */
@@ -406,6 +444,8 @@ h3.dark-mode {
     font-family: sans-serif;
     letter-spacing: 1px;
     color: gray; /* cor do texto ao lado dos cards*/
+    transition: all 0.4s linear;
+
 }
 
 .card-wrapper {
@@ -529,9 +569,16 @@ h3.dark-mode {
     .card-iframe{
         margin-left: 5%;
     }
-    button{
+    #mode-selector{
         margin-top: 23px;
         margin-left: 20px;
+        font-size: 11px;
+        width: 50px;
+        height: 50px;
+    }
+    #lang-selector{
+        margin-top: 23px;
+        margin-left: 80px;
         font-size: 11px;
         width: 50px;
         height: 50px;
@@ -543,13 +590,14 @@ h3.dark-mode {
     }
     .header.dark-mode{
         animation: none;
-        background-size: 320%;
+        background-size: 240%;
         background-position: center;
         background-repeat: no-repeat;
     }
     h1 {
         margin-top: -20px;
     }
+
     .header-image{
         margin-top: 100px;
         height: 35%;
@@ -597,5 +645,14 @@ h3.dark-mode {
     .footer,
     .footer.dark-mode{
         font-size: 12px;
+    }
+}
+
+@media (max-width: 412px) {
+    .header.dark-mode{
+        animation: none;
+        background-size: 400%;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }

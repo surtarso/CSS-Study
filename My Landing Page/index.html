@@ -12,8 +12,10 @@
 <body>
     <!-- HEADER -->
     <header class="header">
+
         <div>
             <button id="mode-selector">Black Hole</button>
+            <button id="lang-selector">pt-BR</button>
             <div class="checkbox-container">
                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="toggle">
@@ -26,7 +28,7 @@
                     <nav class="menu-items">
                         <ul>
                             <li>
-                                <a href="pdf/Tarso Galvao CV 2022.pdf">Curriculum</a>
+                                <a id="cv" href="pdf/Tarso Galvao CV 2022.pdf"></a>
                             </li>
                             <li>
                                 <a href="https://www.linkedin.com/in/tarsogalvao" target="_blank">Linkedin</a>
@@ -38,7 +40,7 @@
                                 <a href="https://www.instagram.com/surtarso/" target="_blank">Instagram</a>
                             </li>
                             <li>
-                                <a href="mailto:tarso.galvao@gmail.com">Contact</a>
+                                <a id="ct" href="mailto:tarso.galvao@gmail.com"></a>
                             </li>
                         </ul>
                     </nav>
@@ -49,7 +51,7 @@
         <!-- Header main image + name text-->
         <img class="header-image" src="img/me.gif">
         <h1>Tarso Galvão</h1>
-        <h3>Full-Stack Developer</h3>
+        <h3 id="ht"></h3>
         <img src="./img/rocket.webp" id="Rocket">
 
         <!-- icons display -->
@@ -57,60 +59,47 @@
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg" />    
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" />
             </div>          
-            
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" /> 
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
             </div>
-            
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" />
             </div>
-
             <div class="column">
                 <img class="icons" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
             </div>
         </div>
-       
+
     </header>
 
     <!-- cards container -->
@@ -120,31 +109,19 @@
         <div class="card-container">
                 <div class="card-0 card-all">
                     <div class="card-iframe">
-
                         <div>
                             <iframe id="iFrame" src="https://tarsogalvao.ddns.net/cv/api/api.html?surtarso" scrolling="no"></iframe>
                         </div>
-
                     </div>
                 </div>
             </a>
-            <div class="card-text">
-                These are the languages that I'm currently studying and focusing on. All my projects available are developed with them and
-                I'm always searching for new ways to improve my skills.
-            </div>
+            <div id="card-0" class="card-text"></div>
         </div>
 
         <!-- card 1 -->
         <div class="card-container">
-            <div class="card-text">
-                On Github you will find most of my projects and studies. I do my best to keep everything up-to-date on my own, contributors are welcome!
-                From Web Design to Game Engines, algorithms and art, to Bash scripts, here is where I'll keep them, feel free to snoop around!
-            </div>
-            <a 
-                class="links" 
-                href="https://github.com/surtarso" 
-                target="_blank"
-            >
+            <div id="card-1" class="card-text"></div>
+            <a class="links" href="https://github.com/surtarso" target="_blank">
                 <div class="card-1 card-all">
                     <div class="card-wrapper">
                         <h2>Github</h2>
@@ -164,19 +141,12 @@
                     </div>
                 </div>
             </a>
-            <div class="card-text">
-                On Linkedin you will find my certifications for courses and bootcamps I completed.
-            </div>
+            <div id="card-2" class="card-text"></div>
         </div>
 
         <!-- card 3 -->
         <div class="card-container">
-            <div class="card-text">
-                URCade is an operating system that turns your Raspberry Pi into a retro gaming system.
-                The system was initially created as an exercise on dealing with Raspberry Pi and its Raspbian OS.
-                As it grew, tools were written to help with its development.
-                A project was born and URCade became a framework for building ready-to-use Pi images.
-            </div>
+            <div id="card-3" class="card-text"></div>
             <a class="links" href="https://solidserverbr.ddns.net/urcade/" target="_blank">
                 <div class="card-3 card-all">
                     <div class="card-wrapper">
@@ -197,9 +167,7 @@
                     </div>
                 </div>
             </a>
-            <div class="card-text">
-                The Playground contains mini-games I developed for my toddler to play.
-            </div>
+            <div id="card-4" class="card-text"></div>
         </div>
 
     </main>
@@ -209,6 +177,7 @@
         <a href="mailto:tarso.galvao@gmail.com">Webmaster: Tarso Galvão</a>
         <p>. Powered by HTML5, CSS and Javascript.</p>
     </footer>
+
     <script src="src/scripts.js"></script>
 </body>
 </html>
