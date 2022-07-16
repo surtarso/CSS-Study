@@ -43,20 +43,20 @@ function changeLanguage(){
 }
 
 
-// change text on mode/language buttons
+// switch text on mode/language buttons (on activate)
 function changeButtonText(type) {
     switch(type){
         case 'toggleMode':
             if(body.classList.contains('dark-mode')) {
                 mode_button.innerHTML = "Light Years";
                 if(language == 'pt-br'){
-                    mode_button.innerHTML = "Claro";
+                    mode_button.innerHTML = "Nebulosa";
                 }
                 return;
             }
             mode_button.innerHTML = "Black Hole";
             if(language == "pt-br"){
-                mode_button.innerHTML = "Escuro"
+                mode_button.innerHTML = "Ergosfera"
             }
             break;
 
@@ -70,12 +70,12 @@ function changeButtonText(type) {
         }
 }
 
-//toggle text language
+//toggle text language (including active mode button)
 function changeBodyText(language){
     switch(language){
         case 'en-us':
             //active button
-            if(mode_button.innerHTML == "Claro"){mode_button.innerHTML = "Light Years";}
+            if(mode_button.innerHTML == "Nebulosa"){mode_button.innerHTML = "Light Years";}
             else {mode_button.innerHTML = "Dark Mode"}
             //menu
             cv.innerHTML = 'Curriculum';
@@ -93,8 +93,8 @@ function changeBodyText(language){
         
         case 'pt-br':
             //active button
-            if(mode_button.innerHTML == "Light Years"){mode_button.innerHTML = "Claro";}
-            else {mode_button.innerHTML = "Escuro"}
+            if(mode_button.innerHTML == "Light Years"){mode_button.innerHTML = "Nebulosa";}
+            else {mode_button.innerHTML = "Ergosfera"}
             //menu
             cv.innerHTML = 'Curriculo';
             cv.href = "pdf/Tarso Galvao CV 2022 PT-BR.pdf"
