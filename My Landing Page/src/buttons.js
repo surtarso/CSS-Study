@@ -49,9 +49,15 @@ function changeButtonText(type) {
         case 'toggleMode':
             if(body.classList.contains('dark-mode')) {
                 mode_button.innerHTML = "Light Years";
+                if(language == 'pt-br'){
+                    mode_button.innerHTML = "Claro";
+                }
                 return;
             }
             mode_button.innerHTML = "Black Hole";
+            if(language == "pt-br"){
+                mode_button.innerHTML = "Escuro"
+            }
             break;
 
         case 'toggleLanguage':
@@ -68,6 +74,9 @@ function changeButtonText(type) {
 function changeBodyText(language){
     switch(language){
         case 'en-us':
+            //active button
+            if(mode_button.innerHTML == "Claro"){mode_button.innerHTML = "Light Years";}
+            else {mode_button.innerHTML = "Dark Mode"}
             //menu
             cv.innerHTML = 'Curriculum';
             cv.href = "pdf/Tarso Galvao CV 2022 EN-US.pdf"
@@ -83,6 +92,9 @@ function changeBodyText(language){
             break;
         
         case 'pt-br':
+            //active button
+            if(mode_button.innerHTML == "Light Years"){mode_button.innerHTML = "Claro";}
+            else {mode_button.innerHTML = "Escuro"}
             //menu
             cv.innerHTML = 'Curriculo';
             cv.href = "pdf/Tarso Galvao CV 2022 PT-BR.pdf"
