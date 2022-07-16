@@ -12,8 +12,12 @@ body.dark-mode {
     background: #1a1919;
 }
 
-/* light/dark MODE BUTTON */
-#mode-selector {
+
+/* -------------------------------------------------------CORNER BUTTONS: */
+
+/* light/dark and lang BUTTONS */
+#mode-selector,
+#lang-selector{
     cursor: pointer;
     position: fixed;
     top: 0;
@@ -29,23 +33,10 @@ body.dark-mode {
 	color: #e5e8e8;
 	transition: all 0.3s linear;
 }
-
-/* language selector button */
+/* language selector button diff */
 #lang-selector{
-    cursor: pointer;
-    position: fixed;
-    top: 0;
-    left: 0;
     margin-left: 140px;
-    margin-top: 10px;
-	border-radius: 40px;
-	font-size: 1.2rem;
-	height: 40px;
 	width: 75px;
-	border: none;
-	background-color: #2c2e32;
-	color: #e5e8e8;
-	transition: all 0.3s linear;
 }
 
 #mode-selector:hover,
@@ -53,14 +44,12 @@ body.dark-mode {
 	background-color: #000401;
     transition: all 0.3s linear;
 }
-
 #mode-selector.dark-mode,
 #lang-selector.dark-mode {
 	background-color: #e5e8e8;
 	color: #35383c;
     transition: all 0.3s linear;
 }
-
 #mode-selector.dark-mode:hover,
 #lang-selector.dark-mode:hover {
 	background-color: #4e545c;
@@ -68,8 +57,12 @@ body.dark-mode {
     transition: all 0.3s linear;
 }
 
-/* HEADER */
-.header {
+
+
+/* ----------------------------------------------------------HEADER: */
+
+/* header bg */
+.header { /* light years */
     height: 100vh;
     width: 100%;
     background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/nebula.jpeg');
@@ -81,7 +74,6 @@ body.dark-mode {
     position: center;
     animation: backgroundTransition 16s ease-in-out infinite;
     transition: all 0.5s linear;
-
 }
 .header.dark-mode {  /* black hole */
     animation: none;
@@ -89,9 +81,9 @@ body.dark-mode {
     background-position: center;
     background-repeat: no-repeat;
     animation: backgroundTransition-dark 16s ease-in-out infinite;
-    transition: all 0.5s linear;
-    
+    transition: all 0.5s linear; 
 }
+
 @keyframes backgroundTransition {
     0% {
         background-position: 0% 80%;
@@ -122,7 +114,6 @@ h1 {  /*tarso galvao*/
     animation: header-text 2s 1;
     margin-top: -5px;
     transition: all 0.5s linear;
-
 }
 h1.dark-mode {
     color:rgb(93, 73, 129);
@@ -139,7 +130,6 @@ h3 {  /*full stack dev*/
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     transition: all 0.5s linear;
 }
-
 h3.dark-mode {
     color: gray;
 }
@@ -157,7 +147,7 @@ h3.dark-mode {
     }
 }
 
-.header-image {
+.header-image { /*my ugly ass face*/
     visibility: visible;
     opacity: 1;
     transform: rotate(-10deg);
@@ -166,12 +156,18 @@ h3.dark-mode {
     margin-bottom: 50px;
     transition: all 0.5s linear;
 }
+
+
+/* --------------------------------------------------ROCKET CONTROL: */
+
+/* the rocket anchor*/
 #rocket{
     position: absolute;
     left: 50%;
     right: 50%;
-
 }
+
+/* the rocket img */
 #Rocket {
     width:40px;
     height:40px;
@@ -181,12 +177,12 @@ h3.dark-mode {
     animation: infinite-spinning 4s infinite;
     animation-timing-function: linear;
     transform-origin: 0% 0%;
-
 }
+
 #Rocket:hover {
     animation-play-state: paused;
 }
-  
+
 @keyframes infinite-spinning {
     from {
         transform: rotate(0deg);
@@ -197,12 +193,21 @@ h3.dark-mode {
 }
 
 
+/* ---------------------------------------------PROG. LANGUAGES ICONS: */
+
 /* programming language icons*/
 .icons{
     width: 35px;
     padding: 2px;
     transition: all 0.5s linear;
 }
+
+.icons:hover{
+    transform: scale(1.5);
+    transition: all 0.1s linear;
+
+}
+
 .row{
     position: absolute;
     display: flex;
@@ -224,7 +229,11 @@ h3.dark-mode {
         transform: scale(1);
     }
 }
-  
+
+
+
+/* --------------------------------------------------- MENU HAMBURGUER: */
+
 /* menu hamburger */
 .checkbox-container {
     display: flex;
@@ -254,6 +263,7 @@ h3.dark-mode {
     transition: 0.5s ease-in-out;
 }
 
+/* menu unclicked*/
 .checkbox .trace:nth-child(1) {
     top: 26px;
     transform: rotate(0);
@@ -267,12 +277,30 @@ h3.dark-mode {
     transform: rotate(0);
 }
 
+/* menu clicked animation*/
+#toggle:checked + .checkbox .trace:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: purple;
+    top: 47px;
+}
+#toggle:checked + .checkbox .trace:nth-child(2) {
+    transform: translateX(100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: purple;
+    top: 48px;
+}
+
 /* some com o checkbox original */
 #toggle {
     display: none;
 }
 
-/* MENU c/ links */
+/* ---------------------------------------------- MENU HB LINKS/TEXT: */
 .menu {
     position: fixed;
     top: 28px;
@@ -318,27 +346,7 @@ h3.dark-mode {
     color: gray;
 }
 
-/* animacao do menu hamburger*/
-
-#toggle:checked + .checkbox .trace:nth-child(1) {
-    transform: rotate(45deg);
-    background-color: purple;
-    top: 47px;
-}
-#toggle:checked + .checkbox .trace:nth-child(2) {
-    transform: translateX(100px);
-    width: 30px;
-    visibility: hidden;
-    opacity: 0;
-}
-#toggle:checked + .checkbox .trace:nth-child(3) {
-    transform: rotate(-45deg);
-    background-color: purple;
-    top: 48px;
-}
-
-/* animacao do conteudo do menu */
-
+/* animacao do conteudo do menu abrindo*/
 #toggle:checked + .checkbox {
     background-color: whitesmoke;
 }
@@ -361,19 +369,8 @@ h3.dark-mode {
 }
 
 
-/* api iframe */
-#iFrame{
-    width: 400px;
-    height: 420px;
-    top: 50%;
-    left: 50%;
-    border: none;
-}
+/* --------------------------------------------------------CARDS:  */
 
-/* CARDS */
-.card-iframe{
-    margin-left: 30%;
-}
 .container {
     width: 100%;
     height: auto;
@@ -384,9 +381,7 @@ h3.dark-mode {
     margin: 3rem 0;
     text-decoration: none;
     transition: all 0.5s linear;
-
 }
-
 .card-container {
     display: flex;
     align-items: center;
@@ -394,10 +389,9 @@ h3.dark-mode {
     width: 90%;
     text-decoration: none;
     transition: all 0.5s linear;
-
 }
 
-/* cards */
+/* all cards */
 .card-all{
     margin: 3rem 0 0;
     background-position: center;
@@ -414,11 +408,23 @@ h3.dark-mode {
     transition: 0.3s;
 }
 
-.card-0{  /* pie chart*/
+/* api iframe (card-0) PIECHART */
+.card-0{ 
     height: 470px;
     width: 300px;
     filter: none;
 }
+#iFrame{
+    width: 400px;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    border: none;
+}
+.card-iframe{
+    margin-left: 30%;
+}
+
 .card-1{ /*GITHUB*/
     height: 300px;
     width: 300px;
@@ -444,6 +450,42 @@ h3.dark-mode {
     background-image: url(../img/tom.png);
 }
 
+.card-all:hover {
+    filter: grayscale(0.6);
+}
+.card-0:hover {  /*disable hover for pie chart*/
+    filter:none;
+}
+.card-all:hover > .card-wrapper::before {
+    text-decoration: none;
+    opacity: 1;
+    width: 285px;
+    height: 285px;
+}
+/* texto pequeno que aparece apos o hover nos cards */
+.card-all:hover > .card-wrapper p {
+    text-decoration: none;
+    opacity: 1;
+    visibility: visible;
+    font-size: 12px;
+    font-weight: bolder;
+    color: whitesmoke; /* cor do texto extra ao dar hover*/
+    animation: wordBounce 1s ease-in-out infinite;
+}
+
+/* animacao do bounce vertical em si */
+@keyframes wordBounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* textos ao lado dos cards */
 .card-text {
     width: 40%;
@@ -451,7 +493,6 @@ h3.dark-mode {
     letter-spacing: 1px;
     color: gray; /* cor do texto ao lado dos cards*/
     transition: all 0.4s linear;
-
 }
 
 .card-wrapper {
@@ -495,48 +536,13 @@ h3.dark-mode {
     text-decoration: none;
     transition: 0.3s;
 }
-
-.card-all:hover {
-    filter: grayscale(0.6);
-}
-.card-0:hover {
-    filter:none;
-}
-
-.card-all:hover > .card-wrapper::before {
-    text-decoration: none;
-    opacity: 1;
-    width: 285px;
-    height: 285px;
-}
-/* texto pequeno que aparece apos o hover nos cards */
-.card-all:hover > .card-wrapper p {
-    text-decoration: none;
-    opacity: 1;
-    visibility: visible;
-    font-size: 12px;
-    font-weight: bolder;
-    color: whitesmoke; /* cor do texto extra ao dar hover*/
-    animation: wordBounce 1s ease-in-out infinite; /* controle da animacao do bounce vertical */
-}
-
-/* animacao do bounce vertical em si */
-@keyframes wordBounce {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
 .links {
     text-decoration: none;
 }
-/* FOOTER */
+
+
+
+/* -----------------------------------------------------------FOOTER: */
 .footer {
     height: 30px;
     width: 100%;
@@ -551,16 +557,19 @@ h3.dark-mode {
 .footer.dark-mode {
     background: #1b1a1a;
 }
-.footer.dark-mode a {
-    color: rgb(139, 135, 135);
-}
 
 .footer a {
     text-decoration: none;
     color: #1b1a1a;
 }
+.footer.dark-mode a {
+    color: rgb(139, 135, 135);
+}
 
-/* RESPONSIVO */
+
+/*---------------------------------------------------------------------------------------*/
+/* ----------------------------------------RESPONSIVO----------------------------------- */
+/*---------------------------------------------------------------------------------------*/
 
 @media (max-width: 810px) {
     #Rocket{

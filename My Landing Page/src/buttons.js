@@ -26,8 +26,10 @@ const card_3 = document.getElementById('card-3');
 const card_4 = document.getElementById('card-4');
 
 //set dark/light mode
-function changeMode(){
-    changeClasses();
+function changeColorMode(){
+    for (i = 0; i < classArray.length; i++) {
+        classArray[i].classList.toggle('dark-mode');
+    }
     changeButtonText('toggleMode');
 }
 
@@ -36,16 +38,10 @@ function changeLanguage(){
     if (language == 'en-us') { language = 'pt-br' }
     else { language = 'en-us' }
 
-    changeText(language);
+    changeBodyText(language);
     changeButtonText('toggleLanguage');
 }
 
-//toggle dark-mode on classes
-function changeClasses(){
-    for (i = 0; i < classArray.length; i++) {
-        classArray[i].classList.toggle('dark-mode');
-    }
-}
 
 // change text on mode/language buttons
 function changeButtonText(type) {
@@ -69,7 +65,7 @@ function changeButtonText(type) {
 }
 
 //toggle text language
-function changeText(language){
+function changeBodyText(language){
     switch(language){
         case 'en-us':
             //menu
@@ -104,8 +100,8 @@ function changeText(language){
 }
 
 //event listeners
-mode_button.addEventListener('click', changeMode);
+mode_button.addEventListener('click', changeColorMode);
 lang_button.addEventListener('click', changeLanguage);
 
 //start page in english
-changeText('en-us');
+changeBodyText('en-us');
