@@ -135,5 +135,10 @@ function changeBodyText(language){
 mode_button.addEventListener('click', changeColorMode);
 lang_button.addEventListener('click', changeLanguage);
 
-//start page in english
-changeBodyText('en-us');
+//start page language
+if(window.navigator.language == 'pt-BR' || 
+    window.navigator.language == 'pt-br' || 
+        window.navigator.language == 'pt'){
+    changeBodyText('pt-BR');
+} 
+else changeBodyText('en-us');
