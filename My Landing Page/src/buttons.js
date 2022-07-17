@@ -12,8 +12,15 @@ const menuText = document.getElementsByTagName('nav')[0];
 const h3 = document.getElementsByTagName('h3')[0];
 const h4 = document.getElementsByTagName('h4')[0];
 const h1 = document.getElementsByTagName('h1')[0];
+const form_btn = document.getElementsByClassName('form-btn')[0];
+const form_input = document.getElementsByClassName('form-input')[0];
+const form_input2 = document.getElementsByClassName('form-input')[1];
+const form_message = document.getElementsByClassName('form-message')[0];
+
 //mode class array
-const classArray = [mode_button, lang_button, body, footer, headerbg, menu, menuIcon, menuText, h4, h3, h1];
+const classArray = [mode_button, lang_button, //buttons
+                    body, footer, headerbg, menu, menuIcon, menuText, h4, h3, h1, //body
+                    form_btn, form_input,form_input2, form_message]; //email form
 
 //text areas
 let language = 'en-us'

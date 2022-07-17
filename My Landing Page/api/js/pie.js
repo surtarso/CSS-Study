@@ -39,6 +39,7 @@
               rect.setAttribute("width", "10");
               rect.setAttribute("height", "10");
               c.setAttribute("transform", "translate(0," + (150 + (y += 20)) + ")");
+
               var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
               text.innerHTML = cData.title;
               text.setAttribute("y", 11);
