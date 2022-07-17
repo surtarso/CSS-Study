@@ -67,7 +67,7 @@ body.dark-mode {
     height: 100vh;
     width: 100%;
     background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/nebula.jpeg');
-    background-size: 120%;
+    background-size: 140%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +80,7 @@ body.dark-mode {
     animation: none;
     background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/blackhole.jpg');
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     animation: backgroundTransition-dark 16s ease-in-out infinite;
     transition: all 0.5s linear; 
 }
@@ -668,6 +668,9 @@ h3.dark-mode {
         width: 40px;
         height: 5px;
     }
+    .header{
+        background-size: cover;
+    }
     .header.dark-mode{
         animation: none;
         animation: backgroundTransition-dark2 16s ease-in-out infinite;
@@ -741,6 +744,14 @@ h3.dark-mode {
 }
 
 @media (max-width: 428px) {
+    #Rocket{
+        margin-top: 80px;
+    }
+    .header-image{
+        margin-top: 0px;
+        height: 30%;
+    }
+
     .header.dark-mode{
         animation: none;
         animation: backgroundTransition-dark3 16s ease-in-out infinite;
@@ -755,10 +766,5 @@ h3.dark-mode {
         100% {
             background-size: 400%;
         }
-    }
-
-    .checkbox,
-    .menu{
-        position: absolute;
     }
 }
