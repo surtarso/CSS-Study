@@ -459,7 +459,7 @@ h3.dark-mode {
 }
 
 .card-all:hover {
-    filter: grayscale(0.6);
+    filter: grayscale(0.0);
 }
 .card-0:hover {  /*disable hover for pie chart*/
     filter:none;
