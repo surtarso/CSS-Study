@@ -32,6 +32,8 @@ const card_1 = document.getElementById('card-1');
 const card_2 = document.getElementById('card-2');
 const card_3 = document.getElementById('card-3');
 const card_4 = document.getElementById('card-4');
+const form_title = document.getElementById('form-title');
+
 
 //set dark/light mode
 function changeColorMode(){
@@ -97,6 +99,11 @@ function changeBodyText(language){
             card_2.innerHTML = "On Linkedin you will find my certifications for courses and bootcamps I completed.";
             card_3.innerHTML = "URCade is an operating system that turns your Raspberry Pi into a retro gaming system. The system was initially created as an exercise on dealing with Raspberry Pi and its Raspbian OS. As it grew, tools were written to help with its development. A project was born and URCade became a framework for building ready-to-use Pi images.";
             card_4.innerHTML = "The Playground contains mini-games I developed for my toddler to play. They are simple games and clones I developed just to exercise and learn. I'll tell you: he loves them! =)"
+            form_title.innerHTML = "Leave me a message!"
+            form_input.placeholder = "   name"
+            form_input2.placeholder = "   e-mail"
+            form_message.placeholder = " type your message"
+            form_btn.innerHTML = "Send"
             break;
         
         case 'pt-br':
@@ -115,6 +122,11 @@ function changeBodyText(language){
             card_2.innerHTML = "No Linkedin estão listados meus certificados de cursos e bootcamps que conquistei.";
             card_3.innerHTML = "URCade é uma plataforma que transforma seu Raspberry Pi em um multi video-game retrô. O sistema foi inicialmente criado como um exercício para lidar com o Raspberry Pi e seu sistema operacional. Com o tempo o exercício cresceu e várias ferramentas foram desenvolvidas durante o processo, até que nasceu o Projeto URCade como um framework para sistemas embarcados.";
             card_4.innerHTML = "O Playground é onde hospedo os mini-games que desenvolvi para meu filhote jogar. São jogos simples e clones que desenvolvo apenas como exercício e estudo. Posso dizer que ele adora! =)";
+            form_title.innerHTML = "Deixe uma mensagem!"
+            form_input.placeholder = "   nome"
+            form_input2.placeholder = "   e-mail"
+            form_message.placeholder = " deixe sua mensagem"
+            form_btn.innerHTML = "Enviar"
             break;
     }
 }

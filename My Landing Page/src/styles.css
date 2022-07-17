@@ -73,7 +73,7 @@ body.dark-mode {
     align-items: center;
     justify-content: center;
     position: center;
-    animation: backgroundTransition 16s ease-in-out infinite;
+    animation: backgroundTransition 18s ease-in-out infinite;
     transition: all 0.5s linear;
 }
 .header.dark-mode {  /* black hole */
@@ -634,7 +634,7 @@ h3.dark-mode {
 
 /*---------------------------------------------------------------------------------------*/
 /* ----------------------------------------RESPONSIVO----------------------------------- */
-/*---------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------810px----------*/
 
 @media (max-width: 810px) {
     #Rocket{
@@ -743,6 +743,7 @@ h3.dark-mode {
     }
 }
 
+/*----------------------------------------------------------------------------428px-----*/
 @media (max-width: 428px) {
     #Rocket{
         margin-top: 80px;
