@@ -18,6 +18,7 @@ body.dark-mode {
 /* light/dark and lang BUTTONS */
 #mode-selector,
 #lang-selector{
+    z-index: 2;
     cursor: pointer;
     position: fixed;
     top: 0;
@@ -97,17 +98,17 @@ body.dark-mode {
 }
 @keyframes backgroundTransition-dark {
     0% {
-        background-size: 140%;
-    }
-    50% {
         background-size: 150%;
     }
+    50% {
+        background-size: 180%;
+    }
     100% {
-        background-size: 140%;
+        background-size: 150%;
     }
 }
 
-h1 {  /*tarso galvao*/
+h1{  /*tarso galvao*/
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: whitesmoke;
@@ -119,19 +120,24 @@ h1.dark-mode {
     color:rgb(93, 73, 129);
 }
 
-h3 {  /*full stack dev*/
+h3, h4{  /*full stack dev*/
     margin-top: -20px;
     font-family: Arial;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #1b1a1a;
+    text-shadow: #b59cde 1px 1px 5px;
+
     animation: header-text 2.5s 1;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     transition: all 0.5s linear;
 }
+h4.dark-mode,
 h3.dark-mode {
     color: gray;
+    text-shadow: #88acd1 1px 1px 4px;
+
 }
 
 @keyframes header-text {
@@ -250,30 +256,29 @@ h3.dark-mode {
     display: flex;
     justify-content: center;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 3;
     transition: 400ms ease-in-out 0;
 }
 
 .checkbox .trace {
     width: 50px;
     height: 2px;
-    background-color: white;
+    background-color: gray;
     position: absolute;
-    border-radius: 4px;
     transition: 0.5s ease-in-out;
 }
 
 /* menu unclicked*/
 .checkbox .trace:nth-child(1) {
-    top: 26px;
+    top: 24px;
     transform: rotate(0);
 }
 .checkbox .trace:nth-child(2) {
-    top: 46px;
+    top: 40px;
     transform: rotate(0);
 }
 .checkbox .trace:nth-child(3) {
-    top: 66px;
+    top: 58px;
     transform: rotate(0);
 }
 
@@ -356,11 +361,11 @@ h3.dark-mode {
 
 #toggle:checked ~ .menu { /* COR DO FUNDO DO MENU ABERTO*/
     box-shadow: 0px 0px 0px 100vmax whitesmoke;
-    z-index: 1;
+    z-index: 2;
 }
 #toggle:checked ~ .menu.dark-mode { /* COR DO FUNDO DO MENU ABERTO*/
     box-shadow: 0px 0px 0px 100vmax #1b1a1a;
-    z-index: 1;
+    z-index: 2;
 }
 
 #toggle:checked ~ .menu-items {
@@ -400,10 +405,11 @@ h3.dark-mode {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(126, 236, 255); /* cor do texto dos cards apos hover */
+    color: rgb(134, 209, 255); /* cor do texto dos cards apos hover */
     font-weight: bold;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: solid;
+    text-shadow: #313132 2px 2px 3px;
     filter: grayscale(0.9);
     transition: 0.3s;
 }
@@ -426,10 +432,10 @@ h3.dark-mode {
 }
 
 .card-1{ /*GITHUB*/
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
-    background-image: url(../img/github.png);  
+    background-image: url(../img/github.gif);  
 }
 .card-2{ /*LINKEDIN*/
     height: 300px;
@@ -447,7 +453,9 @@ h3.dark-mode {
 .card-4{ /*PLAYGROUND*/
     height: 250px;
     width: 250px;
-    background-image: url(../img/tom.png);
+    border-radius: 50%;
+
+    background-image: url(../img/playground.gif);
 }
 
 .card-all:hover {
@@ -470,6 +478,7 @@ h3.dark-mode {
     font-size: 12px;
     font-weight: bolder;
     color: whitesmoke; /* cor do texto extra ao dar hover*/
+    text-shadow: #313132 1px 1px 3px;
     animation: wordBounce 1s ease-in-out infinite;
 }
 
@@ -542,6 +551,44 @@ h3.dark-mode {
 
 
 
+/* -------------------------------------------------------EMAIL FORM: */
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.form-container h3{
+    color: gray;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    max-width: 400px;
+}
+.form-input,
+.form-message,
+.form-btn{
+    padding: 4px;
+    margin-top: 3px;
+    border: 3px dotted rgb(134, 190, 190);
+    border-radius: 8px;
+    background-color: rgb(218, 218, 218);
+}
+.form-message{
+    height:100px;
+    border: 4px solid rgb(134, 190, 190);
+}
+.form-btn{
+    background-color: lightblue;
+    border: 0;
+}
+
+
+
+
+
 /* -----------------------------------------------------------FOOTER: */
 .footer {
     height: 30px;
@@ -605,9 +652,18 @@ h3.dark-mode {
     }
     .header.dark-mode{
         animation: none;
-        background-size: 240%;
-        background-position: center;
-        background-repeat: no-repeat;
+        animation: backgroundTransition-dark2 16s ease-in-out infinite;
+    }
+    @keyframes backgroundTransition-dark2 {
+        0% {
+            background-size: 320%;
+        }
+        50% {
+            background-size: 280%;
+        }
+        100% {
+            background-size: 320%;
+        }
     }
     h1 {
         margin-top: -20px;
@@ -663,11 +719,25 @@ h3.dark-mode {
     }
 }
 
-@media (max-width: 412px) {
+@media (max-width: 428px) {
     .header.dark-mode{
         animation: none;
-        background-size: 400%;
-        background-position: center;
-        background-repeat: no-repeat;
+        animation: backgroundTransition-dark3 16s ease-in-out infinite;
+    }
+    @keyframes backgroundTransition-dark3 {
+        0% {
+            background-size: 400%;
+        }
+        50% {
+            background-size: 360%;
+        }
+        100% {
+            background-size: 400%;
+        }
+    }
+
+    .checkbox,
+    .menu{
+        position: absolute;
     }
 }

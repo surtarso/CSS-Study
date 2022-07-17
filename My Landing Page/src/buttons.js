@@ -10,9 +10,10 @@ const menu = document.getElementsByClassName('menu')[0];
 const menuIcon = document.getElementsByTagName('label')[0];
 const menuText = document.getElementsByTagName('nav')[0];
 const h3 = document.getElementsByTagName('h3')[0];
+const h4 = document.getElementsByTagName('h4')[0];
 const h1 = document.getElementsByTagName('h1')[0];
 //mode class array
-const classArray = [mode_button, lang_button, body, footer, headerbg, menu, menuIcon, menuText, h3, h1];
+const classArray = [mode_button, lang_button, body, footer, headerbg, menu, menuIcon, menuText, h4, h3, h1];
 
 //text areas
 let language = 'en-us'
@@ -50,13 +51,13 @@ function changeButtonText(type) {
             if(body.classList.contains('dark-mode')) {
                 mode_button.innerHTML = "Light Years";
                 if(language == 'pt-br'){
-                    mode_button.innerHTML = "Nebulosa";
+                    mode_button.innerHTML = "Plasma";
                 }
                 return;
             }
             mode_button.innerHTML = "Black Hole";
             if(language == "pt-br"){
-                mode_button.innerHTML = "Ergosfera"
+                mode_button.innerHTML = "Sombra"
             }
             break;
 
@@ -75,7 +76,7 @@ function changeBodyText(language){
     switch(language){
         case 'en-us':
             //active button
-            if(mode_button.innerHTML == "Nebulosa"){mode_button.innerHTML = "Light Years";}
+            if(mode_button.innerHTML == "Plasma"){mode_button.innerHTML = "Light Years";}
             else {mode_button.innerHTML = "Dark Mode"}
             //menu
             cv.innerHTML = 'Curriculum';
@@ -93,8 +94,8 @@ function changeBodyText(language){
         
         case 'pt-br':
             //active button
-            if(mode_button.innerHTML == "Light Years"){mode_button.innerHTML = "Nebulosa";}
-            else {mode_button.innerHTML = "Ergosfera"}
+            if(mode_button.innerHTML == "Light Years"){mode_button.innerHTML = "Plasma";}
+            else {mode_button.innerHTML = "Sombra"}
             //menu
             cv.innerHTML = 'Curriculo';
             cv.href = "pdf/Tarso Galvao CV 2022 PT-BR.pdf"
