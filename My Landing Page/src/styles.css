@@ -8,13 +8,9 @@ body {
     transition: all 0.5s linear;
 
 }
-body.dark-mode {
-    background: #1a1919;
-}
-
+body.dark-mode { background: #1a1919; }
 
 /* -------------------------------------------------------CORNER BUTTONS: */
-
 /* light/dark and lang BUTTONS */
 #mode-selector,
 #lang-selector{
@@ -61,7 +57,6 @@ body.dark-mode {
 
 
 /* ----------------------------------------------------------HEADER: */
-
 /* header bg */
 .header { /* light years */
     height: 100vh;
@@ -86,26 +81,14 @@ body.dark-mode {
 }
 
 @keyframes backgroundTransition {
-    0% {
-        background-position: 0% 80%;
-    }
-    50% {
-        background-position: 80% 100%;
-    }
-    100% {
-        background-position: 0% 80%;
-    }
+    0%   {background-position: 0%  80%; }
+    50%  {background-position: 80% 100%; }
+    100% {background-position: 0%  80%; }
 }
 @keyframes backgroundTransition-dark {
-    0% {
-        background-size: 150%;
-    }
-    50% {
-        background-size: 180%;
-    }
-    100% {
-        background-size: 150%;
-    }
+    0%   { background-size: 150%; }
+    50%  { background-size: 180%; }
+    100% { background-size: 150%; }
 }
 
 h1{  /*tarso galvao*/
@@ -116,9 +99,7 @@ h1{  /*tarso galvao*/
     margin-top: -5px;
     transition: all 0.5s linear;
 }
-h1.dark-mode {
-    color:rgb(93, 73, 129);
-}
+h1.dark-mode { color:rgb(93, 73, 129); }
 
 h3, h4{  /*full stack dev*/
     margin-top: -20px;
@@ -141,16 +122,10 @@ h3.dark-mode {
 }
 
 @keyframes header-text {
-    0%{
-        color: transparent;
-    }
-    35%{
-        letter-spacing: 5px;
-        margin-bottom: -10px;  
-    }
-    85%{
-        letter-spacing: 1.5px;
-    }
+    0%  { color: transparent; }
+    35% { letter-spacing: 5px;
+          margin-bottom: -10px; }
+    85% { letter-spacing: 1.5px; }
 }
 
 .header-image { /*my ugly ass face*/
@@ -165,7 +140,6 @@ h3.dark-mode {
 
 
 /* --------------------------------------------------ROCKET CONTROL: */
-
 /* the rocket anchor*/
 #rocket{
     position: absolute;
@@ -190,17 +164,12 @@ h3.dark-mode {
 }
 
 @keyframes infinite-spinning {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(-360deg);
-    }
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
 }
 
 
 /* ---------------------------------------------PROG. LANGUAGES ICONS: */
-
 /* programming language icons*/
 .icons{
     width: 35px;
@@ -211,7 +180,6 @@ h3.dark-mode {
 .icons:hover{
     transform: scale(1.5);
     transition: all 0.1s linear;
-
 }
 
 .row{
@@ -225,21 +193,13 @@ h3.dark-mode {
 }
 
 @keyframes icon-shrink{
-    0% {
-        transform: scale(1.5);
-    }
-    60%{
-        transform: scale(0.8);
-    }
-    100%{
-        transform: scale(1);
-    }
+    0%   { transform: scale(1.5); }
+    60%  { transform: scale(0.8); }
+    100% { transform: scale(1); }
 }
 
 
-
 /* --------------------------------------------------- MENU HAMBURGUER: */
-
 /* menu hamburger */
 .checkbox-container {
     display: flex;
@@ -301,9 +261,7 @@ h3.dark-mode {
 }
 
 /* some com o checkbox original */
-#toggle {
-    display: none;
-}
+#toggle { display: none; }
 
 /* ---------------------------------------------- MENU HB LINKS/TEXT: */
 .menu {
@@ -347,17 +305,12 @@ h3.dark-mode {
     letter-spacing: 4px;
     font-size: 35px;
 }
-.menu-items.dark-mode ul li a {
-    color: gray;
-}
+.menu-items.dark-mode ul li a { color: gray; }
 
 /* animacao do conteudo do menu abrindo*/
-#toggle:checked + .checkbox {
-    background-color: whitesmoke;
-}
-#toggle:checked + .checkbox.dark-mode { /* cor do fundo do hamburguer*/
-    background-color: #1b1a1a;
-}
+#toggle:checked + .checkbox { background-color: whitesmoke; }
+/* cor do fundo do hamburguer*/
+#toggle:checked + .checkbox.dark-mode { background-color: #1b1a1a; }
 
 #toggle:checked ~ .menu { /* COR DO FUNDO DO MENU ABERTO*/
     box-shadow: 0px 0px 0px 100vmax whitesmoke;
@@ -375,7 +328,6 @@ h3.dark-mode {
 
 
 /* --------------------------------------------------------CARDS:  */
-
 .container {
     width: 100%;
     height: auto;
@@ -427,9 +379,7 @@ h3.dark-mode {
     left: 50%;
     border: none;
 }
-.card-iframe{
-    margin-left: 30%;
-}
+.card-iframe { margin-left: 30%; }
 
 .card-1{ /*GITHUB*/
     height: 250px;
@@ -454,16 +404,13 @@ h3.dark-mode {
     height: 250px;
     width: 250px;
     border-radius: 50%;
-
     background-image: url(../img/cards/playground.gif);
 }
 
-.card-all:hover {
-    filter: grayscale(0.0);
-}
-.card-0:hover {  /*disable hover for pie chart*/
-    filter:none;
-}
+.card-all:hover { filter: grayscale(0.0); }
+/*disable hover for pie chart*/
+.card-0:hover { filter:none; }
+
 .card-all:hover > .card-wrapper::before {
     text-decoration: none;
     opacity: 1;
@@ -481,18 +428,11 @@ h3.dark-mode {
     text-shadow: #313132 1px 1px 3px;
     animation: wordBounce 1s ease-in-out infinite;
 }
-
 /* animacao do bounce vertical em si */
 @keyframes wordBounce {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(10px); }
+    100% { transform: translateY(0); }
 }
 
 /* textos ao lado dos cards */
@@ -545,9 +485,7 @@ h3.dark-mode {
     text-decoration: none;
     transition: 0.3s;
 }
-.links {
-    text-decoration: none;
-}
+.links { text-decoration: none; }
 
 
 
@@ -558,9 +496,8 @@ h3.dark-mode {
     align-items: center;
     padding: 1rem;
 }
-.form-container h3{
-    color: gray;
-}
+.form-container h3{ color: gray; }
+
 .form{
     display: flex;
     flex-direction: column;
@@ -596,9 +533,8 @@ h3.dark-mode {
 .form-btn.dark-mode{
     border: 3px dotted rgb(134, 190, 190);
 }
-.form-message.dark-mode{
-    border: 4px solid rgb(134, 190, 190);
-}
+.form-message.dark-mode { border: 4px solid rgb(134, 190, 190); }
+
 .form-btn.dark-mode{
     animation: none;
     border: 0;
@@ -616,9 +552,7 @@ h3.dark-mode {
     background-size: 400% 400%;
     animation: backgroundTransition 8s ease-in-out infinite;
 }
-.footer.dark-mode {
-    background: #1b1a1a;
-}
+.footer.dark-mode { background: #1b1a1a; }
 
 .footer a,
 .footer p{
@@ -629,7 +563,6 @@ h3.dark-mode {
 .footer.dark-mode p{
     color: rgb(139, 135, 135);
 }
-
 
 
 /*---------------------------------------------------------------------------------------*/
@@ -643,12 +576,10 @@ h3.dark-mode {
         margin-top: 250px;
         padding: 12vmax;
     }
-    .icons{
-        width: 23px;
-    }
-    .card-iframe{
-        margin-left: 5%;
-    }
+    .icons { width: 23px; }
+
+    .card-iframe{ margin-left: 5%; }
+
     #mode-selector{
         margin-top: 23px;
         margin-left: 20px;
@@ -668,27 +599,19 @@ h3.dark-mode {
         width: 40px;
         height: 5px;
     }
-    .header{
-        background-size: cover;
-    }
+    .header { background-size: cover; }
+
     .header.dark-mode{
         animation: none;
         animation: backgroundTransition-dark2 16s ease-in-out infinite;
     }
     @keyframes backgroundTransition-dark2 {
-        0% {
-            background-size: 320%;
-        }
-        50% {
-            background-size: 280%;
-        }
-        100% {
-            background-size: 320%;
-        }
+        0%   { background-size: 320%; }
+        50%  { background-size: 280%; }
+        100% { background-size: 320%; }
     }
-    h1 {
-        margin-top: -20px;
-    }
+    
+    h1 { margin-top: -20px; }
 
     .header-image{
         margin-top: 100px;
@@ -707,9 +630,7 @@ h3.dark-mode {
         top: 55px;
         transform: rotate(0);
     }
-    .container {
-        margin-top: 0;
-    }
+    .container { margin-top: 0; }
     .card-container {
         flex-direction: column;
     }
@@ -718,9 +639,9 @@ h3.dark-mode {
     .container .card-container:nth-child(5) {
         flex-direction: column-reverse;
     }
-    .card-all{ /* disable mouse-over filter for mobile*/
-        filter: none;
-    }
+    /* disable mouse-over filter for mobile*/
+    .card-all { filter: none; }
+
     .card {
         height: 250px;
         width: 250px;
@@ -743,7 +664,10 @@ h3.dark-mode {
     }
 }
 
-/*----------------------------------------------------------------------------428px-----*/
+
+/*---------------------------------------------------------------------------------------*/
+/* ----------------------------------------RESPONSIVO----------------------------------- */
+/*----------------------------------------------------------------------------428px------*/
 @media (max-width: 428px) {
     #Rocket{
         margin-top: 80px;
@@ -758,14 +682,8 @@ h3.dark-mode {
         animation: backgroundTransition-dark3 16s ease-in-out infinite;
     }
     @keyframes backgroundTransition-dark3 {
-        0% {
-            background-size: 400%;
-        }
-        50% {
-            background-size: 360%;
-        }
-        100% {
-            background-size: 400%;
-        }
+        0%   { background-size: 400%; }
+        50%  { background-size: 360%; }
+        100% { background-size: 400%; }
     }
 }
