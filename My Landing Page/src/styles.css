@@ -66,7 +66,7 @@ body.dark-mode {
 .header { /* light years */
     height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/nebula.jpeg');
+    background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/bg/nebula.jpeg');
     background-size: 140%;
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@ body.dark-mode {
 }
 .header.dark-mode {  /* black hole */
     animation: none;
-    background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/blackhole.jpg');
+    background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/bg/blackhole.jpg');
     background-position: center;
     background-repeat: repeat-y;
     animation: backgroundTransition-dark 16s ease-in-out infinite;
@@ -228,7 +228,7 @@ h3.dark-mode {
     0% {
         transform: scale(1.5);
     }
-    40%{
+    60%{
         transform: scale(0.8);
     }
     100%{
@@ -435,19 +435,19 @@ h3.dark-mode {
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background-image: url(../img/github.gif);  
+    background-image: url(../img/cards/github.gif);  
 }
 .card-2{ /*LINKEDIN*/
     height: 300px;
     width: 300px;
     border-radius: 50%;
-    background-image: url(../img/linkedin.png);
+    background-image: url(../img/cards/linkedin.png);
 }
 .card-3{ /*URCADE*/
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background-image: url(../img/urcade.png);
+    background-image: url(../img/cards/urcade.png);
 }
 
 .card-4{ /*PLAYGROUND*/
@@ -455,7 +455,7 @@ h3.dark-mode {
     width: 250px;
     border-radius: 50%;
 
-    background-image: url(../img/playground.gif);
+    background-image: url(../img/cards/playground.gif);
 }
 
 .card-all:hover {
