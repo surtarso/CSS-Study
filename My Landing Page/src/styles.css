@@ -6,7 +6,6 @@ body {
     text-decoration: none;
     overflow-x: hidden;
     transition: all 0.5s linear;
-
 }
 body.dark-mode { background: #1a1919; }
 
@@ -81,9 +80,9 @@ body.dark-mode { background: #1a1919; }
 }
 
 @keyframes backgroundTransition {
-    0%   {background-position: 0%  80%; }
-    50%  {background-position: 80% 100%; }
-    100% {background-position: 0%  80%; }
+    0%   { background-position: 0%  80%; }
+    50%  { background-position: 80% 100%; }
+    100% { background-position: 0%  80%; }
 }
 @keyframes backgroundTransition-dark {
     0%   { background-size: 150%; }
@@ -610,7 +609,7 @@ h3.dark-mode {
         50%  { background-size: 280%; }
         100% { background-size: 320%; }
     }
-    
+
     h1 { margin-top: -20px; }
 
     .header-image{
