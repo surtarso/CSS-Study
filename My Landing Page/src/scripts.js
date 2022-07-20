@@ -6,6 +6,7 @@ const lang_button = document.getElementById('lang-selector');
 const body = document.getElementsByTagName('body')[0];
 const footer = document.getElementsByTagName('footer')[0];
 const headerbg = document.getElementsByClassName('header')[0];
+const headerimg = document.getElementsByClassName('header-image')[0];
 const menu = document.getElementsByClassName('menu')[0];
 const menuIcon = document.getElementsByTagName('label')[0];
 const menuText = document.getElementsByTagName('nav')[0];
@@ -19,7 +20,7 @@ const form_message = document.getElementsByClassName('form-message')[0];
 
 //mode class array
 const classArray = [mode_button, lang_button, //buttons
-                    body, footer, headerbg, menu, menuIcon, menuText, h4, h3, h1, //body
+                    body, footer, headerbg, headerimg, menu, menuIcon, menuText, h4, h3, h1, //body
                     form_btn, form_input,form_input2, form_message]; //email form
 
 //text areas

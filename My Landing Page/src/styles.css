@@ -136,7 +136,9 @@ h3.dark-mode {
     margin-bottom: 50px;
     transition: all 0.5s linear;
 }
-
+.header-image.dark-mode{
+    filter:grayscale(0.5);
+}
 
 /* --------------------------------------------------ROCKET CONTROL: */
 /* the rocket anchor*/
