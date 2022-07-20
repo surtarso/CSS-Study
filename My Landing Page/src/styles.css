@@ -4,7 +4,7 @@ body {
     background: whitesmoke;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
-    overflow-x: hidden;
+    overflow-x: clip;
     transition: all 0.5s linear;
 }
 body.dark-mode { background: #1a1919; }
@@ -349,27 +349,21 @@ h3.dark-mode {
 
 /* all cards */
 .card-all{
-    margin: 3rem 0 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin: 2rem 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(134, 209, 255); /* cor do texto dos cards apos hover */
-    font-weight: bold;
     cursor: pointer;
-    text-decoration: solid;
-    text-shadow: #313132 2px 2px 3px;
-    filter: grayscale(0.9);
+    filter: grayscale(0.7);
     transition: 0.3s;
 }
-
+.card-all:hover{
+    filter: grayscale(0);
+}
 /* api iframe (card-0) PIECHART */
 .card-0{ 
-    height: 470px;
+    height: 360px;
     width: 300px;
-    filter: none;
 }
 #iFrame{
     width: 400px;
@@ -378,61 +372,7 @@ h3.dark-mode {
     left: 50%;
     border: none;
 }
-.card-iframe { margin-left: 30%; }
-
-.card-1{ /*GITHUB*/
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    background-image: url(../img/cards/github.gif);  
-}
-.card-2{ /*LINKEDIN*/
-    height: 300px;
-    width: 300px;
-    border-radius: 50%;
-    background-image: url(../img/cards/linkedin.png);
-}
-.card-3{ /*URCADE*/
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    background-image: url(../img/cards/urcade.png);
-}
-
-.card-4{ /*PLAYGROUND*/
-    height: 250px;
-    width: 250px;
-    border-radius: 50%;
-    background-image: url(../img/cards/playground.gif);
-}
-
-.card-all:hover { filter: grayscale(0.0); }
-/*disable hover for pie chart*/
-.card-0:hover { filter:none; }
-
-.card-all:hover > .card-wrapper::before {
-    text-decoration: none;
-    opacity: 1;
-    width: 285px;
-    height: 285px;
-}
-/* texto pequeno que aparece apos o hover nos cards */
-.card-all:hover > .card-wrapper p {
-    text-decoration: none;
-    opacity: 1;
-    visibility: visible;
-    font-size: 12px;
-    font-weight: bolder;
-    color: whitesmoke; /* cor do texto extra ao dar hover*/
-    text-shadow: #313132 1px 1px 3px;
-    animation: wordBounce 1s ease-in-out infinite;
-}
-/* animacao do bounce vertical em si */
-@keyframes wordBounce {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(10px); }
-    100% { transform: translateY(0); }
-}
+.card-iframe { margin-left: 25%; }
 
 /* textos ao lado dos cards */
 .card-text {
@@ -451,39 +391,25 @@ h3.dark-mode {
     align-items: center;
     position: relative;
 }
-
+.card-all:hover > .card-wrapper::before{
+    text-decoration: none;
+    opacity: 0.5;
+    width: 350px;
+    height: 350px;
+}
 .card-wrapper::before {
     content: '';
     position: absolute;
     height: 150px;
     width: 150px;
     display: block;
-    border: 4px dashed rgb(13, 160, 197); /* cor da borda do card antes hover*/
-    border-radius: 50%;
+    /* cor da borda do card antes hover*/
+    border: 5px dotted rgb(13, 160, 197); 
     opacity: 0;
-    text-decoration: none;
+    border-radius: 40%;
     transition: 0.3s;
 }
 
-.card-wrapper h2 {
-    font-size: 24px;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 4px;
-    margin: 0;
-    transition: 0.3s;
-    margin-top: 125px;
-}
-
-.card-wrapper p {
-    font-size: 0;
-    visibility: hidden;
-    opacity: 0;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: 0.3s;
-}
 .links { text-decoration: none; }
 
 
@@ -510,7 +436,7 @@ h3.dark-mode {
     padding: 4px;
     margin-top: 3px;
     border: 3px dotted rgb(25, 132, 165);
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: rgb(218, 218, 218);
 }
 .form-message{
@@ -519,6 +445,7 @@ h3.dark-mode {
     border-image: linear-gradient(-45deg, rgb(100, 17, 100), rgb(129, 73, 82), rgb(40, 70, 116), rgb(25, 132, 165)) 1;
 }
 .form-btn{
+    cursor: pointer;
     background: linear-gradient(-45deg, rgb(100, 17, 100), rgb(129, 73, 82), rgb(40, 70, 116), rgb(25, 132, 165));
     animation: backgroundTransition 8s ease-in-out infinite;
     background-size: 400% 400%;
@@ -541,7 +468,9 @@ h3.dark-mode {
 
 
 /* -----------------------------------------------------------FOOTER: */
+
 .footer {
+    z-index: 1;
     height: 30px;
     width: 100%;
     display: flex;
@@ -562,6 +491,7 @@ h3.dark-mode {
 .footer.dark-mode p{
     color: rgb(139, 135, 135);
 }
+
 
 
 /*---------------------------------------------------------------------------------------*/
@@ -629,7 +559,7 @@ h3.dark-mode {
         top: 55px;
         transform: rotate(0);
     }
-    .container { margin-top: 0; }
+    .container { margin-top: 2px; }
     .card-container {
         flex-direction: column;
     }
@@ -638,24 +568,17 @@ h3.dark-mode {
     .container .card-container:nth-child(5) {
         flex-direction: column-reverse;
     }
-    /* disable mouse-over filter for mobile*/
-    .card-all { filter: none; }
-
+    .card-all{
+        filter: none;
+    }
     .card {
         height: 250px;
         width: 250px;
     }
     .card-text {
         width: 90%;
-        margin-top: 2rem;
+        margin-top: 3rem;
         text-align: center;
-    }
-    .card:hover > .card-wrapper::before {
-        height: 220px;
-        width: 220px;
-    }
-    .card:hover > .card-wrapper p {
-        font-size: 10px;
     }
     .footer,
     .footer.dark-mode{
@@ -671,6 +594,9 @@ h3.dark-mode {
     #Rocket{
         margin-top: 80px;
     }
+    .checkbox{
+        margin-right: 40px;
+    }
     .header-image{
         margin-top: 0px;
         height: 30%;
@@ -685,4 +611,5 @@ h3.dark-mode {
         50%  { background-size: 360%; }
         100% { background-size: 400%; }
     }
+
 }
