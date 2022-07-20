@@ -140,6 +140,6 @@ lang_button.addEventListener('click', changeLanguage);
 if(window.navigator.language == 'pt-BR' || 
     window.navigator.language == 'pt-br' || 
         window.navigator.language == 'pt'){
-    changeBodyText('pt-BR');
+    changeBodyText('pt-br');
 } 
 else changeBodyText('en-us');
