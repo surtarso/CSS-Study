@@ -7,50 +7,43 @@
 </head>
 
 <style>
-  body,
-  .icon-holder{
+  body{
     background-color: #1a1b1a;
-    color: gray;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
   }
   .wrapper{
-    margin-top: 50%;
+    color: gray;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    padding: 50px;
   }
   a {
     color: darkcyan;
   }
-  .icon {
-    padding: 5%;
-    width: 40%;
+  p{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 </style>
 
 <body>
 
-  <header>
     <div class="wrapper">
 
       <h2>Thank you for your contact! </h2>
 
-      <div class="icon-holder">
-        <lottie-player class="icon"
-                        src="https://assets9.lottiefiles.com/packages/lf20_b4ojt04m.json"
-                        background="rgba(0, 0, 0, 0)"
-                        speed="1" loop autoplay>
-        </lottie-player>
-      </div>
+      <lottie-player class="icon" src="thanks.json"
+                        background="transparent" speed="1" loop autoplay>
+      </lottie-player>
 
       <p>You will be redirected back to the
         <a href="https://tarsogalvao.ddns.net/cv">home page</a> in 3 seconds.
       </p>
 
     </div>
-  </header>
 
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="lottie-player.js"></script>
 </body>
 
 </html>
