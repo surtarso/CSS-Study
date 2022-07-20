@@ -375,7 +375,9 @@ h3.dark-mode {
     border: none;
 }
 .card-iframe { margin-left: 25%; }
-
+.card-icon{
+    width:360px;
+}
 /* textos ao lado dos cards */
 .card-text {
     width: 40%;
@@ -431,7 +433,9 @@ h3.dark-mode {
     width: 75%;
     max-width: 400px;
 }
-
+.message-honey{
+    display:none;
+}
 .form-input,
 .form-message,
 .form-btn{
