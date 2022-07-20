@@ -60,7 +60,7 @@ body.dark-mode { background: #1a1919; }
 .header { /* light years */
     height: 100vh;
     width: 100%;
-    background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/bg/nebula.jpeg');
+    background: linear-gradient(-45deg,rgb(73, 12, 73, 0.5), rgba(109, 57, 65, 0.9), rgb(40, 70, 116, 0.9), rgb(25, 132, 165, 0.5)), url('../img/bg/nebula.webp');
     background-size: 140%;
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@ body.dark-mode { background: #1a1919; }
 }
 .header.dark-mode {  /* black hole */
     animation: none;
-    background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/bg/blackhole.jpg');
+    background: linear-gradient(-45deg,rgba(27, 7, 27, 0.7), rgba(1, 21, 27, 0.7)), url('../img/bg/blackhole.webp');
     background-position: center;
     background-repeat: repeat-y;
     animation: backgroundTransition-dark 16s ease-in-out infinite;
