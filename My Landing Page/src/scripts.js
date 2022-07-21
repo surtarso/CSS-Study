@@ -24,7 +24,8 @@ const classArray = [mode_button, lang_button, //buttons
                     form_btn, form_input,form_input2, form_message]; //email form
 
 //text areas
-let language = 'en-us'
+let language = 'en-us';
+let mode = 'light';
 const cv = document.getElementById('cv');
 const ct = document.getElementById('ct');
 const ht = document.getElementById('ht');
@@ -36,49 +37,25 @@ const card_4 = document.getElementById('card-4');
 const form_title = document.getElementById('form-title');
 
 
+//set language
+function toggleLanguage(){
+    if (language == 'en-us') language = 'pt-br';
+    else language = 'en-us';
+
+    changeBodyText(language);
+}
+
 //set dark/light mode
-function changeColorMode(){
+function toggleColorMode(){
     for (i = 0; i < classArray.length; i++) {
         classArray[i].classList.toggle('dark-mode');
     }
-    changeButtonText('toggleMode');
-}
 
-//set language
-function changeLanguage(){
-    if (language == 'en-us') { language = 'pt-br' }
-    else { language = 'en-us' }
+    if(body.classList.contains('dark-mode')) {
+        mode = 'dark';
+    } else mode = 'light';
 
-    changeBodyText(language);
-    changeButtonText('toggleLanguage');
-}
-
-
-// switch text on mode/language buttons (on activate)
-function changeButtonText(type) {
-    switch(type){
-        case 'toggleMode':
-            if(body.classList.contains('dark-mode')) {
-                mode_button.innerHTML = "Light Years";
-                if(language == 'pt-br'){
-                    mode_button.innerHTML = "Plasma";
-                }
-                return;
-            }
-            mode_button.innerHTML = "Black Hole";
-            if(language == "pt-br"){
-                mode_button.innerHTML = "Sombra"
-            }
-            break;
-
-        case 'toggleLanguage':
-            if(lang_button.innerHTML == 'en-US') {
-                lang_button.innerHTML = "pt-BR";
-                return;
-            }
-            lang_button.innerHTML = "en-US";
-            break;
-        }
+    changeBodyText(language); 
 }
 
 //toggle text language (including active mode button)
@@ -86,8 +63,9 @@ function changeBodyText(language){
     switch(language){
         case 'en-us':
             //active button
-            if(mode_button.innerHTML == "Plasma"){mode_button.innerHTML = "Light Years";}
-            else {mode_button.innerHTML = "Dark Mode"}
+            if(mode == 'dark'){mode_button.innerHTML = "Light Years";}
+            if(mode == 'light'){mode_button.innerHTML = "Dark Mode";}
+            lang_button.innerHTML = "pt-BR";
             //menu
             cv.innerHTML = 'Curriculum';
             cv.href = "pdf/Tarso Galvao CV 2022 EN-US.pdf"
@@ -109,8 +87,9 @@ function changeBodyText(language){
         
         case 'pt-br':
             //active button
-            if(mode_button.innerHTML == "Light Years"){mode_button.innerHTML = "Plasma";}
-            else {mode_button.innerHTML = "Sombra"}
+            if(mode == 'dark'){mode_button.innerHTML = "Plasma";}
+            if(mode == 'light'){mode_button.innerHTML = "Sombra";}
+            lang_button.innerHTML = "en-US";
             //menu
             cv.innerHTML = 'Curriculo';
             cv.href = "pdf/Tarso Galvao CV 2022 PT-BR.pdf"
@@ -133,13 +112,10 @@ function changeBodyText(language){
 }
 
 //event listeners
-mode_button.addEventListener('click', changeColorMode);
-lang_button.addEventListener('click', changeLanguage);
-
+mode_button.addEventListener('click', toggleColorMode);
+lang_button.addEventListener('click', toggleLanguage);
 //start page language
 if(window.navigator.language == 'pt-BR' || 
     window.navigator.language == 'pt-br' || 
-        window.navigator.language == 'pt'){
-    changeBodyText('pt-br');
-} 
+        window.navigator.language == 'pt'){ changeBodyText('pt-br'); } 
 else changeBodyText('en-us');
