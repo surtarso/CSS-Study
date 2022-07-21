@@ -22,7 +22,6 @@ const form_message = document.getElementsByClassName('form-message')[0];
 const classArray = [mode_button, lang_button, //buttons
                     body, footer, headerbg, headerimg, menu, menuIcon, menuText, h4, h3, h1, //body
                     form_btn, form_input,form_input2, form_message]; //email form
-
 //text areas
 let language = 'en-us';
 let mode = 'light';
@@ -35,28 +34,6 @@ const card_2 = document.getElementById('card-2');
 const card_3 = document.getElementById('card-3');
 const card_4 = document.getElementById('card-4');
 const form_title = document.getElementById('form-title');
-
-
-//set language
-function toggleLanguage(){
-    if (language == 'en-us') language = 'pt-br';
-    else language = 'en-us';
-
-    changeBodyText(language);
-}
-
-//set dark/light mode
-function toggleColorMode(){
-    for (i = 0; i < classArray.length; i++) {
-        classArray[i].classList.toggle('dark-mode');
-    }
-
-    if(body.classList.contains('dark-mode')) {
-        mode = 'dark';
-    } else mode = 'light';
-
-    changeBodyText(language); 
-}
 
 //toggle text language (including active mode button)
 function changeBodyText(language){
@@ -111,9 +88,24 @@ function changeBodyText(language){
     }
 }
 
-//event listeners
-mode_button.addEventListener('click', toggleColorMode);
-lang_button.addEventListener('click', toggleLanguage);
+//toggle dark/light mode
+mode_button.addEventListener('click', function(){
+    for (i = 0; i < classArray.length; i++) {
+        classArray[i].classList.toggle('dark-mode');
+    }
+    if(body.classList.contains('dark-mode')) {
+        mode = 'dark';
+    } else mode = 'light';
+    changeBodyText(language); 
+});
+
+//toggle language
+lang_button.addEventListener('click', function(){
+    if (language == 'en-us') language = 'pt-br';
+    else language = 'en-us';
+    changeBodyText(language);
+});
+
 //start page language
 if(window.navigator.language == 'pt-BR' || 
     window.navigator.language == 'pt-br' || 
