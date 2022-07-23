@@ -9,6 +9,13 @@ body {
 }
 body.dark-mode { background: #1a1919; }
 
+/* html canvas */
+#Canvas{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    /* border: 10px solid black; */
+}
 /* -------------------------------------------------------CORNER BUTTONS: */
 /* light/dark and lang BUTTONS */
 #mode-selector,

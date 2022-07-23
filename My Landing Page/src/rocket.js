@@ -11,6 +11,7 @@ rocket.addEventListener('mouseup', function(evt){
             //get new reference of element (to the changed one above)
             var rocket = document.getElementById('rocket');
             rocket.outerHTML = '<a id="rocket"><img src="./img/rocket.webp" id="Rocket"></a>';
+            count = 0;
         }, 4000);  //4 seconds = 1 full spin
     }
 })
