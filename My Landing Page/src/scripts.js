@@ -1,54 +1,57 @@
 //corner buttons
-const mode_button = document.getElementById('mode-selector');
-const lang_button = document.getElementById('lang-selector');
+const mode_button = document.getElementById('mode-selector'); //dark/light
+const lang_button = document.getElementById('lang-selector'); //language selector
 
-//mode classes to change
+//mode CLASSES to change
 const body = document.getElementsByTagName('body')[0];
 const footer = document.getElementsByTagName('footer')[0];
-const headerbg = document.getElementsByClassName('header')[0];
-const headerimg = document.getElementsByClassName('header-image')[0];
-const menu = document.getElementsByClassName('menu')[0];
-const menuIcon = document.getElementsByTagName('label')[0];
-const menuText = document.getElementsByTagName('nav')[0];
-const h3 = document.getElementsByTagName('h3')[0];
-const h4 = document.getElementsByTagName('h4')[0];
-const h1 = document.getElementsByTagName('h1')[0];
-const form_btn = document.getElementsByClassName('form-btn')[0];
-const form_input = document.getElementsByClassName('form-input')[0];
-const form_input2 = document.getElementsByClassName('form-input')[1];
-const form_message = document.getElementsByClassName('form-message')[0];
+const headerbg = document.getElementsByClassName('header')[0]; //header background image
+const headerimg = document.getElementsByClassName('header-image')[0]; //my face picture
+const menu = document.getElementsByClassName('menu')[0]; //full menu
+const menuIcon = document.getElementsByTagName('label')[0]; //hamburger traces
+const menuText = document.getElementsByTagName('nav')[0]; //menu items
+const h3 = document.getElementsByTagName('h3')[0]; //job positions
+const h4 = document.getElementsByTagName('h4')[0]; //form title (for color mode)
+const h1 = document.getElementsByTagName('h1')[0]; //tarso galvao
+const form_btn = document.getElementsByClassName('form-btn')[0]; //send buttons
+const form_input = document.getElementsByClassName('form-input')[0]; //form name
+const form_input2 = document.getElementsByClassName('form-input')[1]; //form email
+const form_message = document.getElementsByClassName('form-message')[0]; //form body
 
-//mode class array
+//mode CLASS array
 const classArray = [mode_button, lang_button, //buttons
                     body, footer, headerbg, headerimg, menu, menuIcon, menuText, h4, h3, h1, //body
                     form_btn, form_input,form_input2, form_message]; //email form
-//text areas
+//text areas IDs
 let language = 'en-us';
 let mode = 'light';
-const cv = document.getElementById('cv');
-const ct = document.getElementById('ct');
-const ht = document.getElementById('ht');
-const card_0 = document.getElementById('card-0');
-const card_1 = document.getElementById('card-1');
-const card_2 = document.getElementById('card-2');
-const card_3 = document.getElementById('card-3');
-const card_4 = document.getElementById('card-4');
-const form_title = document.getElementById('form-title');
+const cv = document.getElementById('cv'); //menu curriculum
+const ct = document.getElementById('ct'); //menu contact
+const ht = document.getElementById('ht'); //header text
+const card_0 = document.getElementById('card-0'); //languages
+const card_1 = document.getElementById('card-1'); //github
+const card_2 = document.getElementById('card-2'); //linkedin
+const card_3 = document.getElementById('card-3'); //urcade
+const card_4 = document.getElementById('card-4'); //playground
+const form_title = document.getElementById('form-title'); //form title (text lang)
 
-//rolling texts header
-var text_active;
-var counter = 0;
-var inst = setInterval(change, 1500);
+//rocket
+var rocket = document.getElementById('rocket');
+var click_count = 0;
 
-function change() {
-  ht.innerHTML = text_active[counter];
-  counter++;
-  if (counter >= text_active.length) {
-    counter = 0;
+//animation to change texts on header
+var text_active;  //set on changeBodyText()
+var job = 0;
+function changeHeaderText() {
+  ht.innerHTML = text_active[job];
+  job++;
+  if (job >= text_active.length) {
+    job = 0;
   }
 }
 
-//toggle text language (including active mode button)
+//----------------------------------------------------------------------------PAGE TEXT:
+//toggle body text language (including active mode button)
 function changeBodyText(language){
     switch(language){
         case 'en-us':
@@ -62,7 +65,7 @@ function changeBodyText(language){
             ct.innerHTML = 'Contact';
             //head
             text_active = ["Full-Stack Developer", "Game Developer", "System Administrator", "Digital Artist"];
-            ht.innerHTML = text_active[counter];
+            ht.innerHTML = text_active[job]; //set initial state
             //cards
             card_0.innerHTML = "These are the languages that I'm currently studying and focusing on. All my projects available are developed with them but I'm always searching for new ways to improve my skills.";
             card_1.innerHTML = "On Github you will find most of my projects and studies. I do my best to keep everything up-to-date on my own, contributors are welcome! From Web Design to Game Engines, algorithms and art, to Bash scripts, here is where I'll keep them, feel free to snoop around!";
@@ -87,7 +90,7 @@ function changeBodyText(language){
             ct.innerHTML = 'Contato';
             //head
             text_active = ["Desenvolvedor Full-Stack", "Desenvolvedor de Jogos", "Administrador de Sistemas", "Artista Digital"];
-            ht.innerHTML = text_active[counter];
+            ht.innerHTML = text_active[job];
             //cards
             card_0.innerHTML = "Estas são as linguagens que aprendi durante meus estudos e nas quais desenvolvo meus projetos. Mas estou sempre a procura de novos conhecimentos."
             card_1.innerHTML = "No Github você pode encontrar meus estudos e projetos, que procuro manter sempre atualizados. Contribuidores são bem vindos! De web-design à engine de jogos, algorítmos e arte à scripts em bash, é lá que vai encontrar. Vai lá dar uma fuçada!";
@@ -103,7 +106,23 @@ function changeBodyText(language){
     }
 }
 
-//toggle dark/light mode
+//-----------------------------------------------------------------------EVENT LISTENERS:
+//toggle hidden game link on rocket listener
+rocket.addEventListener('mouseup', function(){
+    click_count++;
+    if(click_count == 7){
+        //insert link to outter html (creates a new element/object)
+        rocket.outerHTML = '<a id="rocket" href="https://tarsogalvao.ddns.net/games/bullethell"><img src="./img/rocket2.webp" id="Rocket"></a>';
+        setTimeout(function(){
+            //get new reference of element (to the changed one above)
+            var rocket = document.getElementById('rocket');
+            rocket.outerHTML = '<a id="rocket"><img src="./img/rocket.webp" id="Rocket"></a>';
+            click_count = 0;
+        }, 4000);  //4 seconds = 1 full spin
+    }
+})
+
+//toggle dark/light mode button listener
 mode_button.addEventListener('click', function(){
     for (i = 0; i < classArray.length; i++) {
         classArray[i].classList.toggle('dark-mode');
@@ -114,15 +133,20 @@ mode_button.addEventListener('click', function(){
     changeBodyText(language); 
 });
 
-//toggle language
+//toggle language button listener
 lang_button.addEventListener('click', function(){
     if (language == 'en-us') language = 'pt-br';
     else language = 'en-us';
     changeBodyText(language);
 });
 
-//start page language
+
+//-------------------------------------------------------------------------PAGE START:
+//set language to page on load
 if(window.navigator.language == 'pt-BR' || 
     window.navigator.language == 'pt-br' || 
         window.navigator.language == 'pt'){ changeBodyText('pt-br'); } 
 else changeBodyText('en-us');
+
+//start header text animation
+setInterval(changeHeaderText, 1500); //1.5 seconds
