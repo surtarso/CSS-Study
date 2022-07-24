@@ -35,6 +35,19 @@ const card_3 = document.getElementById('card-3');
 const card_4 = document.getElementById('card-4');
 const form_title = document.getElementById('form-title');
 
+//rolling texts header
+var text_active;
+var counter = 0;
+var inst = setInterval(change, 1500);
+
+function change() {
+  ht.innerHTML = text_active[counter];
+  counter++;
+  if (counter >= text_active.length) {
+    counter = 0;
+  }
+}
+
 //toggle text language (including active mode button)
 function changeBodyText(language){
     switch(language){
@@ -48,7 +61,8 @@ function changeBodyText(language){
             cv.href = "pdf/Tarso Galvao CV 2022 EN-US.pdf"
             ct.innerHTML = 'Contact';
             //head
-            ht.innerHTML = "Full-Stack Developer"
+            text_active = ["Full-Stack Developer", "Game Developer", "System Administrator", "Digital Artist"];
+            ht.innerHTML = text_active[counter];
             //cards
             card_0.innerHTML = "These are the languages that I'm currently studying and focusing on. All my projects available are developed with them but I'm always searching for new ways to improve my skills.";
             card_1.innerHTML = "On Github you will find most of my projects and studies. I do my best to keep everything up-to-date on my own, contributors are welcome! From Web Design to Game Engines, algorithms and art, to Bash scripts, here is where I'll keep them, feel free to snoop around!";
@@ -72,7 +86,8 @@ function changeBodyText(language){
             cv.href = "pdf/Tarso Galvao CV 2022 PT-BR.pdf"
             ct.innerHTML = 'Contato';
             //head
-            ht.innerHTML = 'Desenvolvedor Full-Stack'
+            text_active = ["Desenvolvedor Full-Stack", "Desenvolvedor de Jogos", "Administrador de Sistemas", "Artista Digital"];
+            ht.innerHTML = text_active[counter];
             //cards
             card_0.innerHTML = "Estas são as linguagens que aprendi durante meus estudos e nas quais desenvolvo meus projetos. Mas estou sempre a procura de novos conhecimentos."
             card_1.innerHTML = "No Github você pode encontrar meus estudos e projetos, que procuro manter sempre atualizados. Contribuidores são bem vindos! De web-design à engine de jogos, algorítmos e arte à scripts em bash, é lá que vai encontrar. Vai lá dar uma fuçada!";
