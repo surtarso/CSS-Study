@@ -186,6 +186,7 @@ h3.dark-mode {
 }
 
 .icons:hover{
+    content: attr(data-text);
     transform: scale(1.5);
     transition: all 0.1s linear;
 }
