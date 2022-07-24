@@ -42,13 +42,6 @@ var click_count = 0;
 //animation to change texts on header
 var text_active;  //set on changeBodyText()
 var job = 0;
-function changeHeaderText() {
-  ht.innerHTML = text_active[job];
-  job++;
-  if (job >= text_active.length) {
-    job = 0;
-  }
-}
 
 //----------------------------------------------------------------------------PAGE TEXT:
 //toggle body text language (including active mode button)
@@ -65,7 +58,7 @@ function changeBodyText(language){
             ct.innerHTML = 'Contact';
             //head
             text_active = ["Full-Stack Developer", "Game Developer", "System Administrator", "Digital Artist"];
-            ht.innerHTML = text_active[job]; //set initial state
+            ht.innerHTML = text_active[job];
             //cards
             card_0.innerHTML = "These are the languages that I'm currently studying and focusing on. All my projects available are developed with them but I'm always searching for new ways to improve my skills.";
             card_1.innerHTML = "On Github you will find most of my projects and studies. I do my best to keep everything up-to-date on my own, contributors are welcome! From Web Design to Game Engines, algorithms and art, to Bash scripts, here is where I'll keep them, feel free to snoop around!";
@@ -107,7 +100,7 @@ function changeBodyText(language){
 }
 
 //-----------------------------------------------------------------------EVENT LISTENERS:
-//toggle hidden game link on rocket listener
+//toggle hidden game link on rocket
 rocket.addEventListener('mouseup', function(){
     click_count++;
     if(click_count == 7){
@@ -122,7 +115,7 @@ rocket.addEventListener('mouseup', function(){
     }
 })
 
-//toggle dark/light mode button listener
+//toggle dark/light mode button
 mode_button.addEventListener('click', function(){
     for (i = 0; i < classArray.length; i++) {
         classArray[i].classList.toggle('dark-mode');
@@ -133,7 +126,7 @@ mode_button.addEventListener('click', function(){
     changeBodyText(language); 
 });
 
-//toggle language button listener
+//toggle language button
 lang_button.addEventListener('click', function(){
     if (language == 'en-us') language = 'pt-br';
     else language = 'en-us';
@@ -149,4 +142,10 @@ if(window.navigator.language == 'pt-BR' ||
 else changeBodyText('en-us');
 
 //start header text animation
-setInterval(changeHeaderText, 1500); //1.5 seconds
+setInterval(function () {
+    ht.innerHTML = text_active[job];
+    job++;
+    if (job >= text_active.length) {
+      job = 0;
+    }
+  }, 1500); //1.5 seconds
