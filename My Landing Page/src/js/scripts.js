@@ -11,7 +11,6 @@ const menu = document.getElementsByClassName('menu')[0]; //full menu
 const menuIcon = document.getElementsByTagName('label')[0]; //hamburger traces
 const menuText = document.getElementsByTagName('nav')[0]; //menu items
 const h3 = document.getElementsByTagName('h3')[0]; //job positions
-const h4 = document.getElementsByTagName('h4')[0]; //form title (for color mode)
 const h1 = document.getElementsByTagName('h1')[0]; //tarso galvao
 const form_btn = document.getElementsByClassName('form-btn')[0]; //send buttons
 const form_input = document.getElementsByClassName('form-input')[0]; //form name
@@ -20,7 +19,7 @@ const form_message = document.getElementsByClassName('form-message')[0]; //form 
 
 //mode CLASS array
 const classArray = [mode_button, lang_button, //buttons
-                    body, footer, headerbg, headerimg, menu, menuIcon, menuText, h4, h3, h1, //body
+                    body, footer, headerbg, headerimg, menu, menuIcon, menuText, h3, h1, //body 
                     form_btn, form_input,form_input2, form_message]; //email form
 //text areas IDs
 let language = 'en-us';
@@ -65,7 +64,6 @@ function changeBodyText(language){
             card_2.innerHTML = "On LinkedIn, you will find my certifications for courses and bootcamps I completed. I completed these courses and bootcamps because I wanted to improve my career prospects. I believe that my certifications ensure that I have the skills and knowledge needed to pursue a successful career.";
             card_3.innerHTML = "URCade is an operating system that turns your Raspberry Pi into a retro gaming system. The system was initially created as an exercise on dealing with Raspberry Pi and its Raspbian OS. As it grew, tools were written to help with its development. A project was born and URCade became a framework for building ready-to-use Pi images.";
             card_4.innerHTML = "The Playground contains mini-games I developed for my toddler to play. They are simple games and clones I developed just to exercise and learn. The games will all be played in your browser, using JavaScript, HTML5 and CSS3 - no extra applications necessary! In this page, you'll find all the latest updates to the playground (new levels, new features) as well as information about the project."
-            form_title.innerHTML = "Leave me a message!"
             form_input.placeholder = "   name"
             form_input2.placeholder = "   e-mail"
             form_message.placeholder = " type your message"
@@ -90,7 +88,6 @@ function changeBodyText(language){
             card_2.innerHTML = "No LinkedIn, você encontra minhas certificações para cursos e bootcamps que realizei. Eu completei esses cursos e bootcamps porque queria melhorar minhas perspectivas de carreira. Acredito que minhas certificações garantem que eu tenha as habilidades e conhecimentos necessários para seguir uma carreira de sucesso.";
             card_3.innerHTML = "URCade é uma plataforma que transforma seu Raspberry Pi em um multi video-game retrô. O sistema foi inicialmente criado como um exercício para lidar com o Raspberry Pi e seu sistema operacional. Com o tempo o exercício cresceu e várias ferramentas foram desenvolvidas durante o processo, até que nasceu o Projeto URCade como um framework para sistemas embarcados.";
             card_4.innerHTML = "O Playground contém minijogos que desenvolvi para o meu filho brincar. São jogos simples e clones que desenvolvi apenas para exercitar e aprender. Os jogos serão todos jogados em seu navegador, usando JavaScript, HTML5 e CSS3 - sem necessidade de aplicativos extras! Nesta página, você encontrará todas as atualizações mais recentes do playground (novos níveis, novos recursos), bem como informações sobre o projeto.";
-            form_title.innerHTML = "Deixe uma mensagem!"
             form_input.placeholder = "   nome"
             form_input2.placeholder = "   e-mail"
             form_message.placeholder = " deixe sua mensagem"

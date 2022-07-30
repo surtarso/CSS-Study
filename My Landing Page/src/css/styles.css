@@ -157,10 +157,8 @@ h3.dark-mode {
 
 /* the rocket img */
 #Rocket {
-    width:40px;
-    height:40px;
     margin: 0;
-    margin-top: 150px;
+    margin-top: 170px;
     padding: 15vh;
     animation: infinite-spinning 4s infinite;
     animation-timing-function: linear;
@@ -427,19 +425,24 @@ h3.dark-mode {
 
 
 /* -------------------------------------------------------EMAIL FORM: */
-.form-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
+.msgbox-wrapper{
+    padding: 0;
+    margin: 0;
+    margin-bottom: -75px;
+    display: grid;
+    grid-auto-flow: column;
 }
-.form-container h3{ color: gray; }
+
+.form-container{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
 
 .form{
     display: flex;
     flex-direction: column;
-    width: 75%;
-    max-width: 400px;
 }
 .message-honey{
     display:none;
@@ -452,6 +455,7 @@ h3.dark-mode {
     border: 3px dotted rgb(25, 132, 165);
     border-radius: 4px;
     background-color: rgb(218, 218, 218);
+    min-width: 350px;
 }
 .form-message{
     height:100px;
@@ -594,6 +598,11 @@ h3.dark-mode {
         margin-top: 3rem;
         text-align: center;
     }
+    .msgbox-wrapper{
+        margin-top: 40px;
+        grid-auto-flow: row;
+        grid-auto-rows: max-content;
+    }
     .footer,
     .footer.dark-mode{
         font-size: 12px;
@@ -622,5 +631,9 @@ h3.dark-mode {
         50%  { background-size: 360%; }
         100% { background-size: 400%; }
     }
+    .msgbox-wrapper{
+        grid-auto-flow: row;
+    }
+
 
 }
