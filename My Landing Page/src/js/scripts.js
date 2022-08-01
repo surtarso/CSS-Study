@@ -145,4 +145,4 @@ setInterval(function () {
     if (job >= text_active.length) {
       job = 0;
     }
-  }, 1500); //1.5 seconds
+}, 1500); //1.5 seconds
