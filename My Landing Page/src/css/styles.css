@@ -138,7 +138,7 @@ h3.dark-mode {
     visibility: visible;
     opacity: 1;
     transform: rotate(-10deg);
-    height: 40%;
+    /* height: 40%; */
     border-radius: 50%;
     margin-bottom: 50px;
     transition: all 0.5s linear;
@@ -178,7 +178,7 @@ h3.dark-mode {
 /* ---------------------------------------------PROG. LANGUAGES ICONS: */
 /* programming language icons*/
 .icons{
-    width: 35px;
+    /* width: 35px; */
     padding: 2px;
     transition: all 0.5s linear;
 }
