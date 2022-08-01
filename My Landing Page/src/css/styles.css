@@ -562,7 +562,7 @@ h3.dark-mode {
 
     .header-image{
         margin-top: 100px;
-        height: 35%;
+        /* height: 35%; */
     }
 
     .checkbox .trace:nth-child(1) {
@@ -619,9 +619,10 @@ h3.dark-mode {
     }
     .header-image{
         margin-top: 0px;
-        height: 30%;
+        width: 15rem;
+        height: auto;
     }
-
+    .icons { width: 20px; }
     .header.dark-mode{
         animation: none;
         animation: backgroundTransition-dark3 16s ease-in-out infinite;
