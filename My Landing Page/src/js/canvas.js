@@ -56,8 +56,8 @@ function draw(){
     drawRect('black', 0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.globalAlpha = 1;
     //blackhole
-    drawCircle('lightgray', ball_loc_x, ball_loc_y, ball_size);
-    drawCircle('#1a1b1a', (ball_loc_x-1), (ball_loc_y-1), (ball_size-1));
+    // drawCircle('lightgray', ball_loc_x, ball_loc_y, ball_size);
+    // drawCircle('#1a1b1a', (ball_loc_x-1), (ball_loc_y-1), (ball_size-1));
     drawCircle('black', (ball_loc_x-2), (ball_loc_y-2), (ball_size-6));
 }
 
@@ -71,30 +71,30 @@ function updateGame(){
 }
 
 //movement
-document.addEventListener("keydown", function(e){
-    switch (e.keyCode) {
-        case 37: //left
-            if (ball_loc_x >= (ball_size/2)){
-                ball_loc_x -= ball_dir_x;
-                break;
-            }
-        case 38: //up
-            if (ball_loc_y <= CANVAS.height - (ball_size/2)){
-                ball_loc_y += ball_dir_y;
-                break;
-            }
-        case 39: //right
-            if (ball_loc_x <= CANVAS.width - (ball_size/2)){
-                ball_loc_x += ball_dir_x;
-                break;
-            }
-        case 40: //down
-            if (ball_loc_y >= (ball_size/2)){
-                ball_loc_y -= ball_dir_y;
-                break;
-            }
-    };
-});
+// document.addEventListener("keydown", function(e){
+//     switch (e.keyCode) {
+//         case 37: //left
+//             if (ball_loc_x >= (ball_size/2)){
+//                 ball_loc_x -= ball_dir_x;
+//                 break;
+//             }
+//         case 38: //up
+//             if (ball_loc_y <= CANVAS.height - (ball_size/2)){
+//                 ball_loc_y += ball_dir_y;
+//                 break;
+//             }
+//         case 39: //right
+//             if (ball_loc_x <= CANVAS.width - (ball_size/2)){
+//                 ball_loc_x += ball_dir_x;
+//                 break;
+//             }
+//         case 40: //down
+//             if (ball_loc_y >= (ball_size/2)){
+//                 ball_loc_y -= ball_dir_y;
+//                 break;
+//             }
+//     };
+// });
 
 init();
 setInterval(() => {updateGame()}, 1000/30);
