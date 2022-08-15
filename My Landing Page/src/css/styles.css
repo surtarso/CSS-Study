@@ -14,7 +14,6 @@ body.dark-mode { background: #1a1919; }
     position: absolute;
     margin: 0;
     padding: 0;
-    /* border: 10px solid black; */
 }
 /* -------------------------------------------------------CORNER BUTTONS: */
 /* light/dark and lang BUTTONS */
@@ -115,7 +114,6 @@ h3, h4{  /*full stack dev*/
     letter-spacing: 1.5px;
     color: #1b1a1a;
     text-shadow: rgb(25, 132, 165) 1px 1px 10px;
-
     animation: header-text 2.5s 1;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     transition: all 0.5s linear;
@@ -124,7 +122,6 @@ h4.dark-mode,
 h3.dark-mode {
     color: gray;
     text-shadow: #88acd1 1px 1px 4px;
-
 }
 
 @keyframes header-text {
@@ -562,7 +559,6 @@ h3.dark-mode {
 
     .header-image{
         margin-top: 100px;
-        /* height: 35%; */
     }
 
     .checkbox .trace:nth-child(1) {
