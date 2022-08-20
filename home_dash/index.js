@@ -102,6 +102,11 @@ function updateServiceStatus(id, class_name, text, url, link_class) {
     link.className = link_class;
     //if link is Bitwarden, user https:// instead of http://
     link.href = (url == ':8001/#/login') ? 'https://' + window.location.hostname + url : 'http://' + window.location.hostname + url;
+    let quicklink = DOCUMENT.getElementById(id + '_quicklink');
+    //if quicklink is not null, add the quicklink to the link
+    if (quicklink != null) {
+        quicklink.href = link.href;
+    }
 }
 
 //----------------------------------------------- EVENTS ------------------------------------------------
