@@ -1,5 +1,7 @@
 // This script should ping each service and update the html elements with the status of the service and links
 // Tarso Galvao 08-2022
+// TODO: add reverse proxy to the services?
+// TODO: change http to https after SSL is set up
 
 //----------------------------------------------- VARS ------------------------------------------------
 const DOCUMENT = window.document;
@@ -19,7 +21,7 @@ const stopped_link_class = 'label label-default';
 function setupServices() {
     //------------------------------USER SERVICES
     let UBOOQUITY_ID = 'Ubooquity';
-    let UBOOQUITY_ROUTE = ':2039';              //TODO: reverse proxy to the service
+    let UBOOQUITY_ROUTE = ':2039/';              //TODO: reverse proxy to the service
     IDs.push(UBOOQUITY_ID);
     SERVICES.push(UBOOQUITY_ROUTE);
 
@@ -45,7 +47,7 @@ function setupServices() {
     SERVICES.push(PIHOLE_ROUTE);
 
     let DASHBOARD_ID = 'Dashboard';
-    let DASHBOARD_ROUTE = ':5252';                 //TODO: reverse proxy to the service
+    let DASHBOARD_ROUTE = ':5252/';                 //TODO: reverse proxy to the service
     IDs.push(DASHBOARD_ID);
     SERVICES.push(DASHBOARD_ROUTE);
 
@@ -76,9 +78,11 @@ function pingServices() {
 //ping a service using ajax and send update to the the html element
 function pingService(service) {
     $.ajax({
-        // url: 'http://' + window.location.hostname + service,    //CORS errors... TODO: fix this
-        url: service,                                              //adds '/' before ':port', TODO: fix with reverse proxy
+        //if service ID is "Bitwarden", use "https://", else use "http://"
+        url: (service == ':8001/#/login') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service, //CORS errors... TODO: fix headers on apache?
+        // url: service,  //adds '/' before ':port', TODO: fix with reverse proxy?
         type: 'HEAD',
+        // crossDomain: true,
         success: function () {
             updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class);
         }
@@ -96,10 +100,11 @@ function updateServiceStatus(id, class_name, text, url, link_class) {
     let link = DOCUMENT.getElementById(id + '_link');
     link.innerHTML = id;
     link.className = link_class;
-    link.href = url;
+    //if link is Bitwarden, user https:// instead of http://
+    link.href = (url == ':8001/#/login') ? 'https://' + window.location.hostname + url : 'http://' + window.location.hostname + url;
 }
 
 //----------------------------------------------- EVENTS ------------------------------------------------
 setupServices();                 //onload, setup the services
 pingServices();                  //on load, ping all services
-setInterval(pingServices, 5000); //ping all services every 5 seconds
+setInterval(pingServices, 10000); //ping all services every 5 seconds
