@@ -1,42 +1,49 @@
 // This script should ping each service and update the html elements with the status of the service and links
 // Tarso Galvao 08-2022
-//------------------------------------------ INITIAL SETUP ------------------------------------------
-// SERVICES
-const UBOOQUITY_ID = 'ubooquity';
-const UBOOQUITY_ROUTE = ':2039';
-
-const OMPD_ID = 'ompd';
-const OMPD_ROUTE = '/ompd';
-
-const OWNCLOUD_ID = 'owncloud';
-const OWNCLOUD_ROUTE = '/owncloud/login';
-
-//services array
-const SERVICES = [UBOOQUITY_ROUTE, OMPD_ROUTE, OWNCLOUD_ROUTE];
-//IDs array
-const IDs = [UBOOQUITY_ID, OMPD_ID, OWNCLOUD_ID];
 
 //----------------------------------------------- VARS ------------------------------------------------
 const DOCUMENT = window.document;
+const IDs = [];
+const SERVICES = [];
+const running_text = 'Online';
 const running_class = 'label label-success';
 const running_link_class = 'label label-primary';
-const running_text = 'Online';
+const stopped_text = 'Offline';
 const stopped_class = 'label label-danger';
 const stopped_link_class = 'label label-default';
-const stopped_text = 'Offline';
 
+//------------------------------------------ INITIAL SETUP ------------------------------------------
+// SERVICE_ID = 'service title (id of the html element)';
+// SERVICE_ROUTE = 'local route to service (/location)';
 
-//ping each service and update the html elements with the status of the service
+function setupServices() {
+    let UBOOQUITY_ID = 'Ubooquity';
+    let UBOOQUITY_ROUTE = ':2039';    //TODO: reverse proxy to the service
+    IDs.push(UBOOQUITY_ID);
+    SERVICES.push(UBOOQUITY_ROUTE);
+
+    let OMPD_ID = 'OMPD';
+    let OMPD_ROUTE = '/ompd';
+    IDs.push(OMPD_ID);
+    SERVICES.push(OMPD_ROUTE);
+
+    let OWNCLOUD_ID = 'ownCloud';
+    let OWNCLOUD_ROUTE = '/owncloud/login';
+    IDs.push(OWNCLOUD_ID);
+    SERVICES.push(OWNCLOUD_ROUTE);
+} 
+
+//----------------------------------------------- MAIN ------------------------------------------------
+//send ping to all services
 function pingServices() {
     for (let i = 0; i < SERVICES.length; i++) {
-        pingService(SERVICES[i]);                       // ping the service
+        pingService(SERVICES[i]);
     }
 }
 
-//ping a service using ajax and proxyUrl and update the html element with the status of the service
+//ping a service using ajax and send update to the the html element
 function pingService(service) {
     $.ajax({
-        // url: proxyUrl + service,
         url: service,
         type: 'HEAD',
         success: function () {
@@ -59,6 +66,7 @@ function updateServiceStatus(id, class_name, text, url, link_class) {
     link.href = url;
 }
 
-pingServices();
-//update the html elements with the status of the service every 5 seconds
-setInterval(pingServices, 5000);
+//----------------------------------------------- EVENTS ------------------------------------------------
+setupServices();                 //onload, setup the services
+pingServices();                  //on load, ping all services
+setInterval(pingServices, 5000); //ping all services every 5 seconds
