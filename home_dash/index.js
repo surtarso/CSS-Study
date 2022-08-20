@@ -82,7 +82,7 @@ function pingService(service) {
         url: (service == ':8001/#/login') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service, //CORS errors... TODO: fix headers on apache?
         // url: service,  //adds '/' before ':port', TODO: fix with reverse proxy?
         type: 'HEAD',
-        // crossDomain: true,
+        crossDomain: true,
         success: function () {
             updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class);
         }
