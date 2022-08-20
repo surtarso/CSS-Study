@@ -17,8 +17,9 @@ const stopped_link_class = 'label label-default';
 // SERVICE_ROUTE = 'local route to service (/location)';
 
 function setupServices() {
+    //------------------------------USER SERVICES
     let UBOOQUITY_ID = 'Ubooquity';
-    let UBOOQUITY_ROUTE = ':2039';    //TODO: reverse proxy to the service
+    let UBOOQUITY_ROUTE = ':2039';              //TODO: reverse proxy to the service
     IDs.push(UBOOQUITY_ID);
     SERVICES.push(UBOOQUITY_ROUTE);
 
@@ -31,6 +32,37 @@ function setupServices() {
     let OWNCLOUD_ROUTE = '/owncloud/login';
     IDs.push(OWNCLOUD_ID);
     SERVICES.push(OWNCLOUD_ROUTE);
+
+    let WORDPRESS_ID = 'Wordpress';
+    let WORDPRESS_ROUTE = '/wordpress';
+    IDs.push(WORDPRESS_ID);
+    SERVICES.push(WORDPRESS_ROUTE);
+
+    //------------------------------ADMIN SERVICES
+    let PIHOLE_ID = 'Pi-Hole';
+    let PIHOLE_ROUTE = '/admin/index.php';
+    IDs.push(PIHOLE_ID);
+    SERVICES.push(PIHOLE_ROUTE);
+
+    let DASHBOARD_ID = 'Dashboard';
+    let DASHBOARD_ROUTE = ':5252';                 //TODO: reverse proxy to the service
+    IDs.push(DASHBOARD_ID);
+    SERVICES.push(DASHBOARD_ROUTE);
+
+    let WORDPRESS_ADMIN_ID = 'Wordpress-Admin';
+    let WORDPRESS_ADMIN_ROUTE = '/wordpress/wp-admin';
+    IDs.push(WORDPRESS_ADMIN_ID);
+    SERVICES.push(WORDPRESS_ADMIN_ROUTE);
+
+    let UBOOQUITY_ADMIN_ID = 'Ubooquity-Admin';
+    let UBOOQUITY_ADMIN_ROUTE = ':2038/admin';    //TODO: reverse proxy to the service
+    IDs.push(UBOOQUITY_ADMIN_ID);
+    SERVICES.push(UBOOQUITY_ADMIN_ROUTE);
+
+    let BITWARDEN_ID = 'Bitwarden';
+    let BITWARDEN_ROUTE = ':8001/#/login';        //TODO: reverse proxy to the service
+    IDs.push(BITWARDEN_ID);
+    SERVICES.push(BITWARDEN_ROUTE);
 } 
 
 //----------------------------------------------- MAIN ------------------------------------------------
@@ -44,7 +76,8 @@ function pingServices() {
 //ping a service using ajax and send update to the the html element
 function pingService(service) {
     $.ajax({
-        url: service,
+        // url: 'http://' + window.location.hostname + service,    //CORS errors... TODO: fix this
+        url: service,                                              //adds '/' before ':port', TODO: fix with reverse proxy
         type: 'HEAD',
         success: function () {
             updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class);
