@@ -20,15 +20,15 @@ const stopped_link_class = 'label label-default';
 
 function setupServices() {
     //------------------------------USER SERVICES
-    let UBOOQUITY_ID = 'Ubooquity';
-    let UBOOQUITY_ROUTE = ':2039/';              //TODO: reverse proxy to the service
-    IDs.push(UBOOQUITY_ID);
-    SERVICES.push(UBOOQUITY_ROUTE);
-
     let OMPD_ID = 'OMPD';
     let OMPD_ROUTE = '/ompd';
     IDs.push(OMPD_ID);
     SERVICES.push(OMPD_ROUTE);
+
+    let UBOOQUITY_ID = 'Ubooquity';
+    let UBOOQUITY_ROUTE = '/ubooquity'; //reverse proxy :2039/ubooquity
+    IDs.push(UBOOQUITY_ID);
+    SERVICES.push(UBOOQUITY_ROUTE);
 
     let OWNCLOUD_ID = 'ownCloud';
     let OWNCLOUD_ROUTE = '/owncloud/login';
@@ -41,15 +41,15 @@ function setupServices() {
     SERVICES.push(WORDPRESS_ROUTE);
 
     //------------------------------ADMIN SERVICES
+    let DASHBOARD_ID = 'Dashboard';
+    let DASHBOARD_ROUTE = ':5252/';                         //TODO: reverse proxy to the service
+    IDs.push(DASHBOARD_ID);
+    SERVICES.push(DASHBOARD_ROUTE);
+
     let PIHOLE_ID = 'Pi-Hole';
     let PIHOLE_ROUTE = '/admin/index.php';
     IDs.push(PIHOLE_ID);
     SERVICES.push(PIHOLE_ROUTE);
-
-    let DASHBOARD_ID = 'Dashboard';
-    let DASHBOARD_ROUTE = ':5252/';                 //TODO: reverse proxy to the service
-    IDs.push(DASHBOARD_ID);
-    SERVICES.push(DASHBOARD_ROUTE);
 
     let WORDPRESS_ADMIN_ID = 'Wordpress-Admin';
     let WORDPRESS_ADMIN_ROUTE = '/wordpress/wp-admin';
@@ -57,14 +57,31 @@ function setupServices() {
     SERVICES.push(WORDPRESS_ADMIN_ROUTE);
 
     let UBOOQUITY_ADMIN_ID = 'Ubooquity-Admin';
-    let UBOOQUITY_ADMIN_ROUTE = ':2038/admin';    //TODO: reverse proxy to the service
+    let UBOOQUITY_ADMIN_ROUTE = '/ubooquity-admin';    //reverse proxy :2038/ubooquity/admin
     IDs.push(UBOOQUITY_ADMIN_ID);
     SERVICES.push(UBOOQUITY_ADMIN_ROUTE);
 
     let BITWARDEN_ID = 'Bitwarden';
-    let BITWARDEN_ROUTE = ':8001/#/login';        //TODO: reverse proxy to the service
+    let BITWARDEN_ROUTE = ':8001/#/login';                  //TODO: reverse proxy to the service
     IDs.push(BITWARDEN_ID);
     SERVICES.push(BITWARDEN_ROUTE);
+
+    let LIDARR_ID = 'Lidarr';
+    let LIDARR_ROUTE = '/lidarr'; //reverse proxy :8686/lidarr  
+    IDs.push(LIDARR_ID);
+    SERVICES.push(LIDARR_ROUTE);
+
+    let READARR_ID = 'Readarr';
+    let READARR_ROUTE = '/readarr'; //reverse proxy :8787/readarr
+    IDs.push(READARR_ID);
+    SERVICES.push(READARR_ROUTE);
+
+    let JACKETT_ID = 'Jackett';
+    let JACKETT_ROUTE = '/jackett'; //reverse proxy :9117/jackett
+    IDs.push(JACKETT_ID);
+    SERVICES.push(JACKETT_ROUTE);
+
+
 } 
 
 //----------------------------------------------- MAIN ------------------------------------------------
@@ -81,8 +98,10 @@ function pingService(service) {
         //if service ID is "Bitwarden", use "https://", else use "http://"
         url: (service == ':8001/#/login') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service, //CORS errors... TODO: fix headers on apache?
         // url: service,  //adds '/' before ':port', TODO: fix with reverse proxy?
-        type: 'HEAD',
+        type: 'GET',
         crossDomain: true,
+        crossOriginIsolated: true,
+        crossOrigin: true,
         success: function () {
             updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class);
         }
