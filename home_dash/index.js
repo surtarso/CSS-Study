@@ -15,6 +15,43 @@ const stopped_text = 'Offline';
 const stopped_class = 'label label-danger';
 const stopped_link_class = 'label label-default';
 
+//------------------------------------------------ CLASS -------------------------------------------------
+//create a services class
+// class Service {
+//     constructor(id, route, proxyof) {
+//         this.id = id;
+//         this.route = route;
+//         this.proxyof = proxyof;
+//     }
+//     //getters
+//     getId() {
+//         return this.id;
+//     }
+//     getRoute() {
+//         return this.route;
+//     }
+//     getProxyof() {
+//         return this.proxyof;
+//     }
+//     //setters
+//     setId(id) {
+//         this.id = id;
+//     }
+//     setRoute(route) {
+//         this.route = route;
+//     }
+//     setProxyof(proxyof) {
+//         this.proxyof = proxyof;
+//     }
+//     //other methods
+//     static getAllServices() {
+//         let services = [];
+//         for (let i = 0; i < IDs.length; i++) {
+//             services.push(new Service(IDs[i], SERVICES[i], PROXY_URLS[i]));
+//         }
+//         return services;
+//     }
+// }
 
 //------------------------------------------ INITIAL SETUP ------------------------------------------
 // SERVICE_ID = 'service title (id of the html element)';
@@ -113,7 +150,8 @@ function setupServices() {
     IDs.push(PHPMYADMIN_ID);
     SERVICES.push(PHPMYADMIN_ROUTE);
     PROXY_URLS.push(PHPMYADMIN_PROXYOF);
-} 
+}
+
 
 //----------------------------------------------- MAIN ------------------------------------------------
 //send ping to all services
