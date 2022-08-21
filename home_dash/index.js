@@ -1,6 +1,6 @@
 // This script should ping each service and update the html elements with the status of the service and links
 // Tarso Galvao 08-2022
-// TODO: add reverse proxy to the services?
+// TODO: add reverse proxy to the services
 // TODO: change http to https after SSL is set up
 
 //----------------------------------------------- VARS ------------------------------------------------
@@ -31,7 +31,7 @@ function setupServices() {
     SERVICES.push(UBOOQUITY_ROUTE);
 
     let OWNCLOUD_ID = 'ownCloud';
-    let OWNCLOUD_ROUTE = '/owncloud/login';
+    let OWNCLOUD_ROUTE = '/owncloud';
     IDs.push(OWNCLOUD_ID);
     SERVICES.push(OWNCLOUD_ROUTE);
 
@@ -57,7 +57,7 @@ function setupServices() {
     SERVICES.push(WORDPRESS_ADMIN_ROUTE);
 
     let UBOOQUITY_ADMIN_ID = 'Ubooquity-Admin';
-    let UBOOQUITY_ADMIN_ROUTE = '/ubooquity-admin';    //reverse proxy :2038/ubooquity/admin
+    let UBOOQUITY_ADMIN_ROUTE = '/ubooquity-admin'; //reverse proxy :2038/ubooquity/admin
     IDs.push(UBOOQUITY_ADMIN_ID);
     SERVICES.push(UBOOQUITY_ADMIN_ROUTE);
 
@@ -94,19 +94,30 @@ function pingServices() {
 
 //ping a service using ajax and send update to the the html element
 function pingService(service) {
-    $.ajax({
-        //if service ID is "Bitwarden", use "https://", else use "http://"
-        url: (service == ':8001/#/login') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service, //CORS errors... TODO: fix headers on apache?
-        // url: service,  //adds '/' before ':port', TODO: fix with reverse proxy?
-        type: 'GET',
+    //defining request configuration
+    var settings = {
+        cache: false,
+        dataType: 'jsonp',
         crossDomain: true,
-        crossOriginIsolated: true,
         crossOrigin: true,
-        success: function () {
-            updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class);
-        }
-    }).fail(function () {
-        console.log('Service ' + service + ' is offline');
+        // url: (service = ':8001/#/login') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service,
+        url: 'http://' + window.location.hostname + service,
+        method: 'GET',
+        timeout: 5000,
+        headers: {accept: 'application/json', 'Access-Control-Allow-Origin': '*'},
+        //defines the response to be made
+        statusCode: {
+            200: function (response) {
+                console.log('Success! response = ' + response + ' from path: ' + service);
+                updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class);
+            },
+        },
+    };
+    //sends the request
+    $.ajax(settings).done(function (response) {
+        console.log('done with path: ' + service); //this function is not being called
+    }).fail(function (response) {
+        console.log('ERROR! response = ' + response + ' from path: ' + service);
         updateServiceStatus(IDs[SERVICES.indexOf(service)], stopped_class, stopped_text, service, stopped_link_class);
     });
 }
@@ -120,7 +131,8 @@ function updateServiceStatus(id, class_name, text, url, link_class) {
     link.innerHTML = id;
     link.className = link_class;
     //if link is Bitwarden, user https:// instead of http://
-    link.href = (url == ':8001/#/login') ? 'https://' + window.location.hostname + url : 'http://' + window.location.hostname + url;
+    // link.href = (url == ':8001/#/login') ? 'https://' + window.location.hostname + url : 'http://' + window.location.hostname + url;
+    link.href = 'http://' + window.location.hostname + url;
     let quicklink = DOCUMENT.getElementById(id + '_quicklink');
     //if quicklink is not null, add the quicklink to the link
     if (quicklink != null) {
@@ -131,4 +143,4 @@ function updateServiceStatus(id, class_name, text, url, link_class) {
 //----------------------------------------------- EVENTS ------------------------------------------------
 setupServices();                 //onload, setup the services
 pingServices();                  //on load, ping all services
-setInterval(pingServices, 10000); //ping all services every 5 seconds
+setInterval(pingServices, 10000); //ping all services every 10 seconds
