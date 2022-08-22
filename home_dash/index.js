@@ -5,9 +5,6 @@
 
 //----------------------------------------------- VARS ------------------------------------------------
 const DOCUMENT = window.document;
-const IDs = [];
-const SERVICES = [];
-const PROXY_URLS = [];
 const running_text = 'Online';
 const running_class = 'label label-success';
 const running_link_class = 'label label-primary';
@@ -16,148 +13,39 @@ const stopped_class = 'label label-danger';
 const stopped_link_class = 'label label-default';
 
 //------------------------------------------------ CLASS -------------------------------------------------
-//create a services class
-// class Service {
-//     constructor(id, route, proxyof) {
-//         this.id = id;
-//         this.route = route;
-//         this.proxyof = proxyof;
-//     }
-//     //getters
-//     getId() {
-//         return this.id;
-//     }
-//     getRoute() {
-//         return this.route;
-//     }
-//     getProxyof() {
-//         return this.proxyof;
-//     }
-//     //setters
-//     setId(id) {
-//         this.id = id;
-//     }
-//     setRoute(route) {
-//         this.route = route;
-//     }
-//     setProxyof(proxyof) {
-//         this.proxyof = proxyof;
-//     }
-//     //other methods
-//     static getAllServices() {
-//         let services = [];
-//         for (let i = 0; i < IDs.length; i++) {
-//             services.push(new Service(IDs[i], SERVICES[i], PROXY_URLS[i]));
-//         }
-//         return services;
-//     }
-// }
-
-//------------------------------------------ INITIAL SETUP ------------------------------------------
-// SERVICE_ID = 'service title (id of the html element)';
-// SERVICE_ROUTE = 'local route to service (/location)';
-
-function setupServices() {
-    //------------------------------USER SERVICES
-    let OMPD_ID = 'OMPD';
-    let OMPD_ROUTE = '/ompd';
-    let OMPD_PROXYOF = 'none';
-    IDs.push(OMPD_ID);
-    SERVICES.push(OMPD_ROUTE);
-    PROXY_URLS.push(OMPD_PROXYOF);
-
-    let UBOOQUITY_ID = 'Ubooquity';
-    let UBOOQUITY_ROUTE = '/ubooquity';
-    let UBOOQUITY_PROXYOF = ':2039/ubooquity';
-    IDs.push(UBOOQUITY_ID);
-    SERVICES.push(UBOOQUITY_ROUTE);
-    PROXY_URLS.push(UBOOQUITY_PROXYOF);
-
-    let OWNCLOUD_ID = 'ownCloud';
-    let OWNCLOUD_ROUTE = '/owncloud';
-    let OWNCLOUD_PROXYOF = 'none';
-    IDs.push(OWNCLOUD_ID);
-    SERVICES.push(OWNCLOUD_ROUTE);
-    PROXY_URLS.push(OWNCLOUD_PROXYOF);
-
-    let WORDPRESS_ID = 'Wordpress';
-    let WORDPRESS_ROUTE = '/wordpress';
-    let WORDPRESS_PROXYOF = 'none';
-    IDs.push(WORDPRESS_ID);
-    SERVICES.push(WORDPRESS_ROUTE);
-    PROXY_URLS.push(WORDPRESS_PROXYOF);
-
-    //------------------------------ADMIN SERVICES
-    let DASHBOARD_ID = 'Dashboard';
-    let DASHBOARD_ROUTE = ':5252/';                         //TODO: reverse proxy to the service
-    let DASHBOARD_PROXYOF = ':5252/';
-    IDs.push(DASHBOARD_ID);
-    SERVICES.push(DASHBOARD_ROUTE);
-    PROXY_URLS.push(DASHBOARD_PROXYOF);
-
-    let PIHOLE_ID = 'Pi-Hole';
-    let PIHOLE_ROUTE = '/admin/index.php';
-    let PIHOLE_PROXYOF = 'none';
-    IDs.push(PIHOLE_ID);
-    SERVICES.push(PIHOLE_ROUTE);
-    PROXY_URLS.push(PIHOLE_PROXYOF);
-
-    let WORDPRESS_ADMIN_ID = 'Wordpress-Admin';
-    let WORDPRESS_ADMIN_ROUTE = '/wordpress/wp-admin';
-    let WORDPRESS_ADMIN_PROXYOF = 'none';
-    IDs.push(WORDPRESS_ADMIN_ID);
-    SERVICES.push(WORDPRESS_ADMIN_ROUTE);
-    PROXY_URLS.push(WORDPRESS_ADMIN_PROXYOF);
-
-    let UBOOQUITY_ADMIN_ID = 'Ubooquity-Admin';
-    let UBOOQUITY_ADMIN_ROUTE = '/ubooquity-admin';
-    let UBOOQUITY_ADMIN_PROXYOF = ':2038/ubooquity/admin';
-    IDs.push(UBOOQUITY_ADMIN_ID);
-    SERVICES.push(UBOOQUITY_ADMIN_ROUTE);
-    PROXY_URLS.push(UBOOQUITY_ADMIN_PROXYOF);
-
-    // let BITWARDEN_ID = 'Bitwarden';
-    // let BITWARDEN_ROUTE = '/bitwarden'; //TODO: fix proxy to the service (https)
-    // let BITWARDEN_PROXYOF = ':8001/';
-    // IDs.push(BITWARDEN_ID);
-    // SERVICES.push(BITWARDEN_ROUTE);
-    // PROXY_URLS.push(BITWARDEN_PROXYOF);
-
-    let LIDARR_ID = 'Lidarr';
-    let LIDARR_ROUTE = '/lidarr';
-    let LIDARR_PROXYOF = ':8686/lidarr';
-    IDs.push(LIDARR_ID);
-    SERVICES.push(LIDARR_ROUTE);
-    PROXY_URLS.push(LIDARR_PROXYOF);
-
-    let READARR_ID = 'Readarr';
-    let READARR_ROUTE = '/readarr';
-    let READARR_PROXYOF = ':8787/readarr';
-    IDs.push(READARR_ID);
-    SERVICES.push(READARR_ROUTE);
-    PROXY_URLS.push(READARR_PROXYOF);
-
-    let JACKETT_ID = 'Jackett';
-    let JACKETT_ROUTE = '/jackett';
-    let JACKETT_PROXYOF = ':9117/jackett';
-    IDs.push(JACKETT_ID);
-    SERVICES.push(JACKETT_ROUTE);
-    PROXY_URLS.push(JACKETT_PROXYOF);
-
-    let PHPMYADMIN_ID = 'phpMyAdmin';
-    let PHPMYADMIN_ROUTE = '/phpmyadmin/index.php';
-    let PHPMYADMIN_PROXYOF = 'none';
-    IDs.push(PHPMYADMIN_ID);
-    SERVICES.push(PHPMYADMIN_ROUTE);
-    PROXY_URLS.push(PHPMYADMIN_PROXYOF);
+// //create a services class
+class Service {
+    constructor(id, route, proxyof) {
+        this.id = id;
+        this.route = route;
+        this.proxyof = proxyof;
+    }
+    static getAllServices() {
+        return [
+            //new Service('ID', '/path', ':proxy');
+            new Service('OMPD', '/ompd', 'none'),
+            new Service('Ubooquity', '/ubooquity', ':2039/ubooquity'),
+            new Service('ownCloud', '/owncloud', 'none'),
+            new Service('Wordpress', '/wordpress', 'none'),
+            new Service('Dashboard', ':5252/', ':5252/'),
+            new Service('Pi-Hole', '/admin/index.php', 'none'),
+            new Service('Wordpress-Admin', '/wordpress/wp-admin', 'none'),
+            new Service('Ubooquity-Admin', '/ubooquity-admin', ':2038/ubooquity/admin'),
+            // new Service('Bitwarden', '/bitwarden', ':8001/'),
+            new Service('Lidarr', '/lidarr', ':8686/lidarr'),
+            new Service('Readarr', '/readarr', ':8787/readarr'),
+            new Service('Jackett', '/jackett', ':9117/jackett'),
+            new Service('phpMyAdmin', '/phpmyadmin/index.php', 'none'),
+        ];       
+    }
 }
-
 
 //----------------------------------------------- MAIN ------------------------------------------------
 //send ping to all services
 function queryAllServices() {
-    for (let i = 0; i < SERVICES.length; i++) {
-        queryService(SERVICES[i]);
+    let services = Service.getAllServices();
+    for (let i = 0; i < services.length; i++) {
+        queryService(services[i]);
     }
 }
 
@@ -170,7 +58,7 @@ function queryService(service) {
         crossDomain: true,
         crossOrigin: true,
         // url: (service = '/bitwarden') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service,
-        url: 'http://' + window.location.hostname + service,
+        url: 'http://' + window.location.hostname + service.route,
         method: 'GET',
         timeout: 5000,
         headers: {accept: 'application/json', 'Access-Control-Allow-Origin': '*'},
@@ -213,20 +101,20 @@ function queryService(service) {
 //process the response of the service
 function processStatus(status, response, service, success) {
     if (success) {
-        console.log(status + response + ' from path: ' + service);
-        updateServiceStatus(IDs[SERVICES.indexOf(service)], running_class, running_text, service, running_link_class, PROXY_URLS[SERVICES.indexOf(service)]);
+        console.log(status + response + ' from path: ' + service.route);
+        updateServiceStatus(service.id, running_class, running_text, service.route, running_link_class, service.proxyof);
     } else {
-        console.log(status + response + ' from path: ' + service);
-        updateServiceStatus(IDs[SERVICES.indexOf(service)], stopped_class, stopped_text, service, stopped_link_class, PROXY_URLS[SERVICES.indexOf(service)]);
+        console.log(status + response + ' from path: ' + service.route);
+        updateServiceStatus(service.id, stopped_class, stopped_text, service.route, stopped_link_class, service.proxyof);
     }
 }
 
 //update the html element with the status of the service
-function updateServiceStatus(id, class_name, text, url, link_class, proxy) {
+function updateServiceStatus(id, status_class, status_text, url, link_class, proxyof) {
     //status
     let status_element = DOCUMENT.getElementById(id);
-    status_element.className = class_name;
-    status_element.innerHTML = text;
+    status_element.className = status_class;
+    status_element.innerHTML = status_text;
     //page link
     let link_element = DOCUMENT.getElementById(id + '_link');
     link_element.innerHTML = id;
@@ -239,16 +127,16 @@ function updateServiceStatus(id, class_name, text, url, link_class, proxy) {
     path_element.innerHTML = url;
     //page proxy
     let proxy_element = DOCUMENT.getElementById(id + '_proxy');
-    proxy_element.innerHTML = proxy;
+    proxy_element.innerHTML = proxyof;
     //quick link
     let quicklink = DOCUMENT.getElementById(id + '_quicklink');
     //if quicklink is not null, add the quicklink to the link
     if (quicklink != null) {
-        quicklink.href = link.href;
+        quicklink.href = link_element.href;
     }
 }
 
 //----------------------------------------------- EVENTS ------------------------------------------------
-setupServices();                     //onload, setup the services
+// setupServices();                     //onload, setup the services
 queryAllServices();                   //on load, ping all services
 setInterval(queryAllServices, 10000); //ping all services every 10 seconds
