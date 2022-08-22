@@ -6,32 +6,34 @@
 
 //------------------------------------------- SERVICES SETUP ----------------------------------------------
 class Service {
-    constructor( id, route, proxy ) {
+    constructor( id, route, proxy, site ) {
         this.id = id;       // the HTML element id
         this.route = route; // the route to the service
         this.proxy = proxy; // the proxy port to use
+        this.site = site;   // the oficial website of the service
     }
     //add new service here
     static getAllServices() {
         return [
-            //new Service('ID', '/route', ':proxy');
-            new Service( 'OMPD', '/ompd', 'none' ),
-            new Service( 'Ubooquity', '/ubooquity', ':2039/ubooquity' ),
-            new Service( 'ownCloud', '/owncloud', 'none' ),
-            new Service( 'Wordpress', '/wordpress', 'none' ),
-            new Service( 'Dashboard', ':5252/', ':5252/' ),
-            new Service( 'Pi-Hole', '/admin/index.php', 'none' ),
-            new Service( 'Wordpress-Admin', '/wordpress/wp-admin', 'none' ),
-            new Service( 'Ubooquity-Admin', '/ubooquity-admin', ':2038/ubooquity/admin' ),
-            // new Service( 'Bitwarden', '/bitwarden', ':8001/' ),
-            new Service( 'Lidarr', '/lidarr', ':8686/lidarr' ),
-            new Service( 'Readarr', '/readarr', ':8787/readarr' ),
-            new Service( 'Jackett', '/jackett', ':9117/jackett' ),
-            new Service( 'phpMyAdmin', '/phpmyadmin/index.php', 'none' ),
+            //new Service('ID', '/route', ':proxy', 'oficial webpage path');
+            new Service( 'OMPD', '/ompd', 'none', 'http://ompd.pl/'),
+            new Service( 'Ubooquity', '/ubooquity', ':2039/ubooquity', 'https://vaemendis.net/ubooquity/'),
+            new Service( 'ownCloud', '/owncloud', 'none', 'https://owncloud.com/'),
+            new Service( 'Wordpress', '/wordpress', 'none', 'https://wordpress.org/'),
+            new Service( 'Dashboard', ':5252/', ':5252/', 'https://dietpi.com/'),
+            new Service( 'Pi-Hole', '/admin/index.php', 'none', 'http://pi-hole.net/'),
+            new Service( 'Wordpress-Admin', '/wordpress/wp-admin', 'none', 'https://wordpress.org/'),
+            new Service( 'Ubooquity-Admin', '/ubooquity-admin', ':2038/ubooquity/admin', 'https://vaemendis.net/ubooquity/admin/'),
+            // new Service( 'Bitwarden', '/bitwarden', ':8001/', 'https://bitwarden.com/'),
+            new Service( 'Lidarr', '/lidarr', ':8686/lidarr', 'https://lidarr.audio/'),
+            new Service( 'Readarr', '/readarr', ':8787/readarr', 'https://readarr.com/'),
+            new Service( 'Jackett', '/jackett', ':9117/jackett', 'https://jackett.io/'),
+            new Service( 'phpMyAdmin', '/phpmyadmin/index.php', 'none', 'https://phpmyadmin.net/'),
         ];       
     }
 }
 //------------------------------------------- STATUS SETUP ------------------------------------------------
+const ICON = 'http://www.google.com/s2/favicons?domain=';  //url to fech favicons
 const ONLINE = { text: 'Online', status_color: 'label label-success', link_color: 'label label-primary' };
 const OFFLINE = { text: 'Offline', status_color: 'label label-danger', link_color: 'label label-default' };
 //----------------------------------------------- MAIN ----------------------------------------------------
@@ -79,11 +81,17 @@ function processError( response, service ) {
 // UPDATE THE HTML ELEMENT WITH THE STATUS OF THE SERVICE:
 function updateServiceStatus( service, status ) {
     //get html elements
+    let icon_element = document.getElementById(service.id + '_icon');                   //Service favicon
+    let site_element = document.getElementById(service.id + '_site');                   //Service website
     let link_element = window.document.getElementById(service.id + '_link');            //column "Service"
     let path_element = window.document.getElementById(service.id + '_path');            //column "Path"
     let proxy_element = window.document.getElementById(service.id + '_proxy');          //column "Proxy"
     let status_element = window.document.getElementById(service.id + '_status');        //column "Status"
     let quicklink_element = window.document.getElementById(service.id + '_quicklink');  //menu "Quicklinks"
+
+    //add the url to the favicon with link to the website
+    site_element.setAttribute('href', service.site);
+    icon_element.setAttribute('src', ICON + service.site);
 
     //add button link text, class style and link (col: Service)
     link_element.innerHTML = service.id;
