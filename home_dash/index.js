@@ -1,4 +1,4 @@
-// This script queries each service and update the html elements with the status of the service and their links
+// This script queries each service and update the html elements with the status and links
 // Tarso Galvao 08-2022
 // OBS: Proxy must be configured in the webserver for this to work!
 // TODO: add missing proxy to services
@@ -55,26 +55,25 @@ function queryService( service ) {
         headers: {accept: 'application/json', 'Access-Control-Allow-Origin': '*'},
         //defining the response to be made
         statusCode: {
-            200: function (response) { processStatus(response, service, true); },   //200: found
-            404: function (response) { processStatus(response, service, false); },  //404: not found
-            403: function (response) { processStatus(response, service, false); },  //403: denied
-            504: function (response) { processStatus(response, service, false); },  //504: timeout
-            500: function (response) { processStatus(response, service, false); },  //500: server error
-            0: function (response) { processStatus(response, service, false); },    //0: rejected
+            200: function () { updateServiceStatus(service, ONLINE); },     //200: found
+            404: function (response) { processError(response, service); },  //404: not found
+            403: function (response) { processError(response, service); },  //403: denied
+            504: function (response) { processError(response, service); },  //504: timeout
+            500: function (response) { processError(response, service); },  //500: server error
+            0: function (response) { processError(response, service); },    //0: rejected
         },
     };
     $.ajax( query_setup )
 }
 
-// PROCESS THE STATUS OF THE SERVICE:
-function processStatus( response, service, found ) {
-    if ( found ) { updateServiceStatus(service, ONLINE); }
-
-    else if ( !found ) {
-        updateServiceStatus(service, OFFLINE);
-        console.log('Status: '+response.status+' Response: '+JSON.stringify(response,null,2)+' from route: '+service.route);}
-
-    else { console.log('Error while processing the status of the service: '+service.id); }
+// PROCESS STATUS ERROR OF THE SERVICE:
+function processError( response, service ) {
+    updateServiceStatus(service, OFFLINE);
+    console.log(
+        ' Status: ' + response.status +
+        ' Response: ' + JSON.stringify(response,null,2) +
+        ' From route: ' + service.route
+    );
 }
 
 // UPDATE THE HTML ELEMENT WITH THE STATUS OF THE SERVICE:
@@ -96,11 +95,9 @@ function updateServiceStatus( service, status ) {
 
     //add page proxy with link (col: Proxy)
     if ( service.proxy === 'none' ) { proxy_element.className = 'hidden'; }
-    
     else if ( service.proxy !== 'none' ) {
         proxy_element.innerHTML = service.proxy;
         proxy_element.href = 'http://' + window.location.hostname + service.proxy;}
-    
     else { console.log('Error while setting the proxy of the service: ' + service.id); }
 
     //add status text and class style (col: Status)
