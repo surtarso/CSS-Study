@@ -1,48 +1,48 @@
-// This script should ping each service and update the html elements with the status of the service and linksconst
+// This script queries each service and update the html elements with the status of the service and their links
 // Tarso Galvao 08-2022
-// TODO: add reverse proxy to the services
+// OBS: Proxy must be configured in the webserver for this to work!
+// TODO: add missing proxy to services
 // TODO: change http to https after SSL is set up
-
-//------------------------------------------- STATUS SETUP ------------------------------------------------
-const ONLINE = { text: 'Online', status_color: 'label label-success', link_color: 'label label-primary' };
-const OFFLINE = { text: 'Offline', status_color: 'label label-danger', link_color: 'label label-default' };
 
 //------------------------------------------- SERVICES SETUP ----------------------------------------------
 class Service {
-    constructor(id, route, proxy) {
-        this.id = id;
-        this.route = route;
-        this.proxy = proxy;
+    constructor( id, route, proxy ) {
+        this.id = id;       // the HTML element id
+        this.route = route; // the route to the service
+        this.proxy = proxy; // the proxy port to use
     }
+    //add new service here
     static getAllServices() {
         return [
             //new Service('ID', '/route', ':proxy');
-            new Service('OMPD', '/ompd', 'none'),
-            new Service('Ubooquity', '/ubooquity', ':2039/ubooquity'),
-            new Service('ownCloud', '/owncloud', 'none'),
-            new Service('Wordpress', '/wordpress', 'none'),
-            new Service('Dashboard', ':5252/', ':5252/'),
-            new Service('Pi-Hole', '/admin/index.php', 'none'),
-            new Service('Wordpress-Admin', '/wordpress/wp-admin', 'none'),
-            new Service('Ubooquity-Admin', '/ubooquity-admin', ':2038/ubooquity/admin'),
-            // new Service('Bitwarden', '/bitwarden', ':8001/'),
-            new Service('Lidarr', '/lidarr', ':8686/lidarr'),
-            new Service('Readarr', '/readarr', ':8787/readarr'),
-            new Service('Jackett', '/jackett', ':9117/jackett'),
-            new Service('phpMyAdmin', '/phpmyadmin/index.php', 'none'),
+            new Service( 'OMPD', '/ompd', 'none' ),
+            new Service( 'Ubooquity', '/ubooquity', ':2039/ubooquity' ),
+            new Service( 'ownCloud', '/owncloud', 'none' ),
+            new Service( 'Wordpress', '/wordpress', 'none' ),
+            new Service( 'Dashboard', ':5252/', ':5252/' ),
+            new Service( 'Pi-Hole', '/admin/index.php', 'none' ),
+            new Service( 'Wordpress-Admin', '/wordpress/wp-admin', 'none' ),
+            new Service( 'Ubooquity-Admin', '/ubooquity-admin', ':2038/ubooquity/admin' ),
+            // new Service( 'Bitwarden', '/bitwarden', ':8001/' ),
+            new Service( 'Lidarr', '/lidarr', ':8686/lidarr' ),
+            new Service( 'Readarr', '/readarr', ':8787/readarr' ),
+            new Service( 'Jackett', '/jackett', ':9117/jackett' ),
+            new Service( 'phpMyAdmin', '/phpmyadmin/index.php', 'none' ),
         ];       
     }
 }
-
-//----------------------------------------------- MAIN ------------------------------------------------
-//send ping to all services
+//------------------------------------------- STATUS SETUP ------------------------------------------------
+const ONLINE = { text: 'Online', status_color: 'label label-success', link_color: 'label label-primary' };
+const OFFLINE = { text: 'Offline', status_color: 'label label-danger', link_color: 'label label-default' };
+//----------------------------------------------- MAIN ----------------------------------------------------
+// SEND QUERY TO ALL SERVICES:
 function queryAllServices() {
     let services = Service.getAllServices();
-    for (let i = 0; i < services.length; i++) { queryService(services[i]); }
+    for ( let i = 0; i < services.length; i++ ) { queryService(services[i]); }
 }
 
-//ping a service using ajax and send update to the the html element
-function queryService(service) {
+// QUERY SERVICE:
+function queryService( service ) {
     //defining request configuration
     var query_setup = {
         cache: false,
@@ -53,40 +53,32 @@ function queryService(service) {
         method: 'GET',
         timeout: 5000,
         headers: {accept: 'application/json', 'Access-Control-Allow-Origin': '*'},
-        //defines the response to be made
+        //defining the response to be made
         statusCode: {
-            //found
-            200: function (response) { processStatus(response, service, true); },
-            //not found
-            404: function (response) { processStatus(response, service, false); },
-            //denied
-            403: function (response) { processStatus(response, service, false); },
-            //timeout
-            504: function (response) { processStatus(response, service, false); },
-            //server error
-            500: function (response) { processStatus(response, service, false); },
-            //rejected
-            0: function (response) { processStatus(response, service, false); },
-            //other error
-            default: function (response) { processStatus(response, service, false); },
+            200: function (response) { processStatus(response, service, true); },   //200: found
+            404: function (response) { processStatus(response, service, false); },  //404: not found
+            403: function (response) { processStatus(response, service, false); },  //403: denied
+            504: function (response) { processStatus(response, service, false); },  //504: timeout
+            500: function (response) { processStatus(response, service, false); },  //500: server error
+            0: function (response) { processStatus(response, service, false); },    //0: rejected
         },
     };
-    $.ajax(query_setup)
+    $.ajax( query_setup )
 }
 
-//process the response of the service
-function processStatus(response, service, found) {
-    if (found) { updateServiceStatus(service, ONLINE); }
+// PROCESS THE STATUS OF THE SERVICE:
+function processStatus( response, service, found ) {
+    if ( found ) { updateServiceStatus(service, ONLINE); }
 
-    else if (!found) {
+    else if ( !found ) {
         updateServiceStatus(service, OFFLINE);
-        console.log('status: ' + response.status + ' response: ' + JSON.stringify(response, null, 2) + ' from route: ' + service.route); }
+        console.log('Status: '+response.status+' Response: '+JSON.stringify(response,null,2)+' from route: '+service.route);}
 
-    else { console.log('error while processing the status of the service: ' + service.id); }
+    else { console.log('Error while processing the status of the service: '+service.id); }
 }
 
-//update the html element with the status of the service
-function updateServiceStatus(service, status) {
+// UPDATE THE HTML ELEMENT WITH THE STATUS OF THE SERVICE:
+function updateServiceStatus( service, status ) {
     //get html elements
     let link_element = window.document.getElementById(service.id + '_link');            //column "Service"
     let path_element = window.document.getElementById(service.id + '_path');            //column "Path"
@@ -103,22 +95,21 @@ function updateServiceStatus(service, status) {
     path_element.innerHTML = service.route;
 
     //add page proxy with link (col: Proxy)
-    if (service.proxy === 'none') { proxy_element.className = 'hidden'; }
+    if ( service.proxy === 'none' ) { proxy_element.className = 'hidden'; }
     
-    else if (service.proxy !== 'none') {
+    else if ( service.proxy !== 'none' ) {
         proxy_element.innerHTML = service.proxy;
         proxy_element.href = 'http://' + window.location.hostname + service.proxy;}
     
-    else { console.log('error while setting the proxy of the service: ' + service.id); }
+    else { console.log('Error while setting the proxy of the service: ' + service.id); }
 
     //add status text and class style (col: Status)
     status_element.innerHTML = status.text;
     status_element.className = status.status_color;
 
     //add link to quicklinks (top quicklinks menu)
-    if (quicklink_element != null) { quicklink_element.href = link_element.href; }
+    if ( quicklink_element != null ) { quicklink_element.href = link_element.href; }
 }
-
-//----------------------------------------------- LOOP ------------------------------------------------
+//---------------------------------------- MAIN LOOP ------------------------------------------------
 queryAllServices();                   //on load, ping all services
 setInterval(queryAllServices, 10000); //ping all services every 10 seconds
