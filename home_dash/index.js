@@ -1,28 +1,22 @@
-// This script should ping each service and update the html elements with the status of the service and links
+// This script should ping each service and update the html elements with the status of the service and linksconst
 // Tarso Galvao 08-2022
 // TODO: add reverse proxy to the services
 // TODO: change http to https after SSL is set up
 
-//----------------------------------------------- VARS ------------------------------------------------
-const DOCUMENT = window.document;
-const running_text = 'Online';
-const running_class = 'label label-success';
-const running_link_class = 'label label-primary';
-const stopped_text = 'Offline';
-const stopped_class = 'label label-danger';
-const stopped_link_class = 'label label-default';
+//------------------------------------------- STATUS SETUP ------------------------------------------------
+const ONLINE = { text: 'Online', status_color: 'label label-success', link_color: 'label label-primary' };
+const OFFLINE = { text: 'Offline', status_color: 'label label-danger', link_color: 'label label-default' };
 
-//------------------------------------------------ CLASS -------------------------------------------------
-// //create a services class
+//------------------------------------------- SERVICES SETUP ----------------------------------------------
 class Service {
-    constructor(id, route, proxyof) {
+    constructor(id, route, proxy) {
         this.id = id;
         this.route = route;
-        this.proxyof = proxyof;
+        this.proxy = proxy;
     }
     static getAllServices() {
         return [
-            //new Service('ID', '/path', ':proxy');
+            //new Service('ID', '/route', ':proxy');
             new Service('OMPD', '/ompd', 'none'),
             new Service('Ubooquity', '/ubooquity', ':2039/ubooquity'),
             new Service('ownCloud', '/owncloud', 'none'),
@@ -44,20 +38,17 @@ class Service {
 //send ping to all services
 function queryAllServices() {
     let services = Service.getAllServices();
-    for (let i = 0; i < services.length; i++) {
-        queryService(services[i]);
-    }
+    for (let i = 0; i < services.length; i++) { queryService(services[i]); }
 }
 
 //ping a service using ajax and send update to the the html element
 function queryService(service) {
     //defining request configuration
-    var settings = {
+    var query_setup = {
         cache: false,
         dataType: 'jsonp',
         crossDomain: true,
         crossOrigin: true,
-        // url: (service = '/bitwarden') ? 'https://' + window.location.hostname + service : 'http://' + window.location.hostname + service,
         url: 'http://' + window.location.hostname + service.route,
         method: 'GET',
         timeout: 5000,
@@ -65,78 +56,69 @@ function queryService(service) {
         //defines the response to be made
         statusCode: {
             //found
-            200: function (response) {
-                processStatus('200 Success! response= ', response, service, true);
-            },
+            200: function (response) { processStatus(response, service, true); },
             //not found
-            404: function (response) {
-                processStatus('404 Not Found! response = ', response, service, false);
-            },
+            404: function (response) { processStatus(response, service, false); },
             //denied
-            403: function (response) {
-                processStatus('403 Forbidden! response = ', response, service, false);
-            },
+            403: function (response) { processStatus(response, service, false); },
             //timeout
-            504: function (response) {
-                processStatus('504 Gateway Timeout! response = ', response, service, false);
-            },
+            504: function (response) { processStatus(response, service, false); },
             //server error
-            500: function (response) {
-                processStatus('500 Internal Server Error! response = ', response, service, false);
-            },
+            500: function (response) { processStatus(response, service, false); },
             //rejected
-            0: function (response) {
-                processStatus('0 Rejected! response = ', response, service, false);
-            },
+            0: function (response) { processStatus(response, service, false); },
             //other error
-            default: function (response) {
-                processStatus('Unknown Error! response = ', response, service, false);
-            },
+            default: function (response) { processStatus(response, service, false); },
         },
     };
-    //send the request
-    $.ajax(settings)
+    $.ajax(query_setup)
 }
 
 //process the response of the service
-function processStatus(status, response, service, success) {
-    if (success) {
-        console.log(status + response + ' from path: ' + service.route);
-        updateServiceStatus(service.id, running_class, running_text, service.route, running_link_class, service.proxyof);
-    } else {
-        console.log(status + response + ' from path: ' + service.route);
-        updateServiceStatus(service.id, stopped_class, stopped_text, service.route, stopped_link_class, service.proxyof);
-    }
+function processStatus(response, service, found) {
+    if (found) { updateServiceStatus(service, ONLINE); }
+
+    else if (!found) {
+        updateServiceStatus(service, OFFLINE);
+        console.log('status: ' + response.status + ' response: ' + JSON.stringify(response, null, 2) + ' from route: ' + service.route); }
+
+    else { console.log('error while processing the status of the service: ' + service.id); }
 }
 
 //update the html element with the status of the service
-function updateServiceStatus(id, status_class, status_text, url, link_class, proxyof) {
-    //status
-    let status_element = DOCUMENT.getElementById(id);
-    status_element.className = status_class;
-    status_element.innerHTML = status_text;
-    //page link
-    let link_element = DOCUMENT.getElementById(id + '_link');
-    link_element.innerHTML = id;
-    link_element.className = link_class;
-    //if link is Bitwarden, use https:// instead of http://
-    // link.href = (url == '/bitwarden') ? 'https://' + window.location.hostname + url : 'http://' + window.location.hostname + url;
-    link_element.href = 'http://' + window.location.hostname + url;
-    //page path
-    let path_element = DOCUMENT.getElementById(id + '_path');
-    path_element.innerHTML = url;
-    //page proxy
-    let proxy_element = DOCUMENT.getElementById(id + '_proxy');
-    proxy_element.innerHTML = proxyof;
-    //quick link
-    let quicklink = DOCUMENT.getElementById(id + '_quicklink');
-    //if quicklink is not null, add the quicklink to the link
-    if (quicklink != null) {
-        quicklink.href = link_element.href;
-    }
+function updateServiceStatus(service, status) {
+    //get html elements
+    let link_element = window.document.getElementById(service.id + '_link');            //column "Service"
+    let path_element = window.document.getElementById(service.id + '_path');            //column "Path"
+    let proxy_element = window.document.getElementById(service.id + '_proxy');          //column "Proxy"
+    let status_element = window.document.getElementById(service.id + '_status');        //column "Status"
+    let quicklink_element = window.document.getElementById(service.id + '_quicklink');  //menu "Quicklinks"
+
+    //add button link text, class style and link (col: Service)
+    link_element.innerHTML = service.id;
+    link_element.className = status.link_color;
+    link_element.href = 'http://' + window.location.hostname + service.route;
+
+    //add page route text (col: Path)
+    path_element.innerHTML = service.route;
+
+    //add page proxy with link (col: Proxy)
+    if (service.proxy === 'none') { proxy_element.className = 'hidden'; }
+    
+    else if (service.proxy !== 'none') {
+        proxy_element.innerHTML = service.proxy;
+        proxy_element.href = 'http://' + window.location.hostname + service.proxy;}
+    
+    else { console.log('error while setting the proxy of the service: ' + service.id); }
+
+    //add status text and class style (col: Status)
+    status_element.innerHTML = status.text;
+    status_element.className = status.status_color;
+
+    //add link to quicklinks (top quicklinks menu)
+    if (quicklink_element != null) { quicklink_element.href = link_element.href; }
 }
 
-//----------------------------------------------- EVENTS ------------------------------------------------
-// setupServices();                     //onload, setup the services
+//----------------------------------------------- LOOP ------------------------------------------------
 queryAllServices();                   //on load, ping all services
 setInterval(queryAllServices, 10000); //ping all services every 10 seconds
