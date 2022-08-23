@@ -1,0 +1,6 @@
+/* hides the quicklink menu on ipad vertical and bellow */
+@media screen and (max-width: 810px) {
+    #Quicklinks{
+        display: none;
+    }
+}
