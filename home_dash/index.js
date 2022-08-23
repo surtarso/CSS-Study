@@ -1,21 +1,22 @@
-// This script queries each service and update the html elements with the status and links
+// This script queries each service with ajax and update the html elements with the status and links
 // Tarso Galvao 08-2022
 // OBS: Proxy must be configured in the webserver for this to work!
 // TODO: add missing proxy to services
 // TODO: change http to https after SSL is set up
 
+
 //------------------------------------------- SERVICES SETUP ----------------------------------------------
 class Service {
     constructor( id, route, proxy, site ) {
-        this.id = id;       // the HTML element id
-        this.route = route; // the route to the service
-        this.proxy = proxy; // the proxy port to use
-        this.site = site;   // the oficial website of the service
+        this.id = id;       //the HTML element id
+        this.route = route; //the local route to the service
+        this.proxy = proxy; //the proxy port to use
+        this.site = site;   //the oficial website of the service
     }
     //add new service here
     static getAllServices() {
         return [
-            //new Service('ID', '/route', ':proxy', 'oficial webpage path');
+            //---------( 'ID', '/localRoute', ':proxy', 'http://domain.com/');
             new Service( 'OMPD', '/ompd', 'none', 'http://ompd.pl/'),
             new Service( 'Ubooquity', '/ubooquity', ':2039/ubooquity', 'https://vaemendis.net/ubooquity/'),
             new Service( 'ownCloud', '/owncloud', 'none', 'https://owncloud.com/'),
@@ -29,19 +30,19 @@ class Service {
             new Service( 'Readarr', '/readarr', ':8787/readarr', 'https://readarr.com/'),
             new Service( 'Jackett', '/jackett', ':9117/jackett', 'https://jackett.io/'),
             new Service( 'phpMyAdmin', '/phpmyadmin/index.php', 'none', 'https://phpmyadmin.net/'),
+            new Service( 'Transmission', '/transmission', ':9091/transmission', 'https://transmissionbt.com/'),
         ];       
     }
 }
-//------------------------------------------- STATUS SETUP ------------------------------------------------
+
+const SERVICES = Service.getAllServices();
 const ICON = 'http://www.google.com/s2/favicons?domain=';  //url to fech favicons
 const ONLINE = { text: 'Online', status_color: 'label label-success', link_color: 'label label-primary' };
 const OFFLINE = { text: 'Offline', status_color: 'label label-danger', link_color: 'label label-default' };
+
 //----------------------------------------------- MAIN ----------------------------------------------------
 // SEND QUERY TO ALL SERVICES:
-function queryAllServices() {
-    let services = Service.getAllServices();
-    for ( let i = 0; i < services.length; i++ ) { queryService(services[i]); }
-}
+function queryAllServices() { SERVICES.forEach( service => queryService(service) ); }
 
 // QUERY SERVICE:
 function queryService( service ) {
@@ -68,7 +69,7 @@ function queryService( service ) {
     $.ajax( query_setup )
 }
 
-// PROCESS STATUS ERROR OF THE SERVICE:
+// PROCESS STATUS != 200 OF THE SERVICE:
 function processError( response, service ) {
     updateServiceStatus(service, OFFLINE);
     console.log(
@@ -89,9 +90,9 @@ function updateServiceStatus( service, status ) {
     let status_element = window.document.getElementById(service.id + '_status');        //column "Status"
     let quicklink_element = window.document.getElementById(service.id + '_quicklink');  //menu "Quicklinks"
 
-    //add the url to the favicon with link to the website
-    site_element.setAttribute('href', service.site);
+    //add the url to fetch the favicon with link to the official website
     icon_element.setAttribute('src', ICON + service.site);
+    site_element.setAttribute('href', service.site);
 
     //add button link text, class style and link (col: Service)
     link_element.innerHTML = service.id;
@@ -102,11 +103,10 @@ function updateServiceStatus( service, status ) {
     path_element.innerHTML = service.route;
 
     //add page proxy with link (col: Proxy)
-    if ( service.proxy === 'none' ) { proxy_element.className = 'hidden'; }
-    else if ( service.proxy !== 'none' ) {
+    if (service.proxy !== 'none') {
         proxy_element.innerHTML = service.proxy;
-        proxy_element.href = 'http://' + window.location.hostname + service.proxy;}
-    else { console.log('Error while setting the proxy of the service: ' + service.id); }
+        proxy_element.href = 'http://' + window.location.hostname + service.proxy;
+    } else { proxy_element.className = 'hidden'; }  
 
     //add status text and class style (col: Status)
     status_element.innerHTML = status.text;
