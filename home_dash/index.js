@@ -115,6 +115,23 @@ function updateServiceStatus( service, status ) {
     //add link to quicklinks (top quicklinks menu)
     if ( quicklink_element != null ) { quicklink_element.href = link_element.href; }
 }
+
+//add stats to the header
+function getTabUsage() {
+    //cpu usage
+    work = new Worker("data:text/javascript,setInterval(` dl=Date.now();for(itr=1;itr<1000;itr++){};dl=Date.now()-dl;postMessage(dl);`,1000);");
+    work.onmessage = (evt)=>{ window.document.getElementById('cpu_usage').innerHTML = 'CPU: ' + Math.round(evt.data) + '%'; };
+    //ram usage (only in chrome. firefox and safari not supported)
+    if (window.navigator.userAgent.indexOf('Chrome') > -1) {
+        let ram = JSON.stringify(window.performance.memory['usedJSHeapSize']);
+        window.document.getElementById('ram_usage').innerHTML = 'RAM: ' + Math.round(ram/1000000) + 'MB';
+    } else {
+        window.document.getElementById('ram_usage').className = 'hidden';
+    }
+}
+
 //---------------------------------------- MAIN LOOP ------------------------------------------------
 queryAllServices();                   //on load, ping all services
+getTabUsage();                        //on load, get tab usage
 setInterval(queryAllServices, 10000); //ping all services every 10 seconds
+setInterval(getTabUsage, 2000);       //get page cpu/ram usage every 2 seconds
